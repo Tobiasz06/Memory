@@ -22,7 +22,7 @@ h1 {
     text-align: left;
 }
 
-/* Game Area - with background image */
+/* Game Area */
 .game-area {
     min-height: calc(100vh - 140px);
     padding: 40px 10px;
@@ -38,9 +38,9 @@ h1 {
 }
 
 .game-mode-info {
-    color: white;
+    color: rgb(26, 42, 79, 0.6);
     font-size: 1.2em;
-    font-weight: bold;
+    font-weight: 400;
     margin-top: 20px;
     margin-bottom: 20px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
