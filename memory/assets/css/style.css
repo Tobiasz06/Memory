@@ -1,32 +1,64 @@
+/* Base Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #ffffff;
-    text-align: center;
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
+/* Header */
 h1 {
-    background-color: #214a72;
-    color: #000000;
+    background-color: #1a2a4f;
+    color: #ffffff;
     padding: 20px;
     margin: 0;
 }
 
+/* Setup Form and Footer */
 #setup-form, footer {
     margin: 20px auto;
     max-width: 400px;
     text-align: left;
 }
 
+/* Game Area - with background image */
+.game-area {
+    min-height: calc(100vh - 140px);
+    padding: 40px 10px;
+    background: linear-gradient(135deg, #c3e4fd, #a0f0d0);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    position: relative;
+}
+
+.game-mode-info {
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+/* Grid - revert to your original */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 10px;
     max-width: 800px;
+    width: 100%;
     margin: 20px auto;
     padding: 10px;
 }
+
+/* Cards */
 .card {
     width: 100px;
     height: 100px;
@@ -39,32 +71,27 @@ h1 {
     cursor: pointer;
 }
 
+.card:hover {
+    transform: scale(1.05);
+}
+
 .card img {
     width: 90%;
     height: auto;
     pointer-events: none;
 }
 
-footer {
-    background-color: #eee;
-    padding: 10px;
-    font-size: 0.9em;
-    color: #555;
+/* Top-left Back Button */
+.top-controls {
     position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-/* Top bar with back button */
-.top-bar {
-    position: absolute;
     top: 20px;
     left: 20px;
+    z-index: 1000;
 }
 
-.top-bar button {
-    background-color: #0b1721; 
-    color: white;
+.top-controls button {
+    background-color: #20335f;
+    color: rgb(255, 255, 255);
     border: none;
     padding: 8px 16px;
     font-size: 1em;
@@ -73,6 +100,19 @@ footer {
     transition: background-color 0.3s ease;
 }
 
-.top-bar button:hover {
-    background-color: #0f1848;
+.top-controls button:hover {
+    background-color: #3a5799;
+}
+
+/* Footer */
+footer {
+    background-color: #1a2a4f;
+    padding: 10px;
+    font-size: 0.9em;
+    color: #ffffff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
 }

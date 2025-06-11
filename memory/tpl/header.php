@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Fruit Memory Game</title>
+    <title>Memory Game</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<h1>Fruit Memory Game</h1>
+<div class="page-wrapper">
+    <header class="game-header">
+        <h1>Memory Match</h1>
+    </header>
