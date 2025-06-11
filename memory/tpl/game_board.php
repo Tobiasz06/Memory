@@ -2,7 +2,10 @@
     <?php
     $totalCards = $pairs * 2;
     for ($i = 0; $i < $totalCards; $i++) {
-        echo 'here we add the cards later when json is setup';
+        // Temporary command, image is in the working.
+        echo '<div class="card" data-card-id="'.$i.'">
+                <img src="assets/img/card-back.png" alt="card back">
+              </div>';
     }
     ?>
 </div>
