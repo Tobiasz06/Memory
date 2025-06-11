@@ -1,4 +1,5 @@
 <?php
-include 'includes/header.php';
-include 'includes/footer.php';
+include 'tpl/header.php';
+include 'templates/player_form.php';
+include 'tpl/footer.php';
 ?>
