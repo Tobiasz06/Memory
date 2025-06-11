@@ -1,3 +1,8 @@
+<!-- Back button -->
+<div class="top-bar">
+    <button onclick="window.location.href='index.php'">← Back to Menu</button>
+</div>
+
 <div id="game-board" class="grid">
     <?php
     $totalCards = $pairs * 2;
