@@ -1,14 +1,14 @@
 <?php
-// Alle mogelijke kaarten (8 unieke paren)
+// all possible cards
 $cards = [
     "apple", "banana", "grape", "kiwi",
     "lemon", "mango", "peach", "cherry"
 ];
 
-// Dubbel de array om paren te maken
+// double the array to creat cards
 $cards = array_merge($cards, $cards);
 
-// Schud de kaarten
+// shuffel the cards
 shuffle($cards);
 ?>
 
