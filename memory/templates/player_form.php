@@ -1,8 +1,8 @@
 <div class="container-box">
     <form action="game.php" method="get" id="setup-form">
         <label>Mode:</label><br>
-        <input type="radio" name="mode" value="Solo" checked> Solo<br>
-        <input type="radio" name="mode" value="Multiplayer"> Multiplayer<br><br>
+        <input type="radio" name="mode" value="solo" checked> Solo<br>
+        <input type="radio" name="mode" value="multi"> Multiplayer<br><br>
 
         <div id="player-select">
             <label>Number of Players (if multiplayer):</label>

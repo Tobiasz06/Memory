@@ -11,8 +11,8 @@ switch ($pairs) {
 
 // All possible unique card types
 $cardTypes = [
-    "apple", "banana", "grape", "kiwi",
-    "lemon", "mango", "peach", "cherry"
+    "apple", "avocado", "banana", "blueberries",
+    "cherry", "grape", "kiwi", "lemon", "mango", "peach"
 ];
 
 // Limit to the number of needed pairs

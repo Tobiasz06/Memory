@@ -233,3 +233,9 @@ footer {
 
 .card-back {
     transform: rotateY(180deg);}
+
+#score-board p.current {
+    font-weight: bold;
+    color: darkgreen;
+}
+

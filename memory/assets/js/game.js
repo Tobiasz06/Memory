@@ -1,51 +1,81 @@
 $(document).ready(function () {
     let flippedCards = [];
-    let currentPlayer = "Player 1";
-    let scores = {
-        "Player 1": 0,
-        "Player 2": 0
-    };
-
+    const mode = new URLSearchParams(window.location.search).get("mode") || "solo";
     const totalPairs = $('.card').length / 2;
+
+    // Multiplayer support
+    const numPlayers = mode === 'multi' ? parseInt(new URLSearchParams(window.location.search).get("players")) || 2 : 1;
+    let currentPlayerIndex = 0;
+    let scores = Array(numPlayers).fill(0);
+    let soloTurns = 0;
+    let soloMisses = 0;
+
 
     // update whose turn it is
     function updateTurnIndicator() {
-        $('#turn-indicator').text(`${currentPlayer}'s turn`);
+        if (mode === "multi") {
+            $('#turn-indicator').text(`Player ${currentPlayerIndex + 1}'s turn`);
+            highlightCurrentPlayer();  // 👈 this will "activate" it
+        } else {
+            $('#turn-indicator').text(`Solo Mode`);
+        }
     }
 
-    // update score display
+    // update scores
     function updateScores() {
-        $('#score-player1').text(scores["Player 1"]);
-        $('#score-player2').text(scores["Player 2"]);
+        if (mode === "multi") {
+            scores.forEach((score, index) => {
+                $(`#score-player${index + 1}`).text(score);
+            });
+        } else {
+            $('#solo-turns').text(soloTurns);
+            $('#solo-misses').text(soloMisses);
+        }
     }
 
-    // switch to the other player
+    // switch players
     function switchPlayer() {
-        currentPlayer = (currentPlayer === "Player 1") ? "Player 2" : "Player 1";
+        currentPlayerIndex = (currentPlayerIndex + 1) % numPlayers;
         updateTurnIndicator();
     }
 
+
     // check if game is over and show winner
-    function checkGameOver() {
-        const matchedPairs = scores["Player 1"] + scores["Player 2"];
+        function checkGameOver() {
+        const matchedPairs = scores.reduce((a, b) => a + b, 0);
         if (matchedPairs === totalPairs) {
             let message = "";
-            if (scores["Player 1"] > scores["Player 2"]) {
-                message = "🏆 Player 1 wins!";
-            } else if (scores["Player 2"] > scores["Player 1"]) {
-                message = "🏆 Player 2 wins!";
+
+            if (mode === "multi") {
+                const maxScore = Math.max(...scores);
+                const winners = scores.map((s, i) => s === maxScore ? i + 1 : null).filter(x => x);
+                if (winners.length === 1) {
+                    message = `🏆 Player ${winners[0]} wins!`;
+                } else {
+                    message = `🤝 It's a draw between players: ${winners.join(", ")}`;
+                }
             } else {
-                message = "🤝 It's a draw!";
+                message = `Game over! Total turns: ${soloTurns}, Misses: ${soloMisses}`;
             }
 
             $('#game-over-message').text(message).fadeIn();
             $('#restart-button').fadeIn();
-            $('.card').off('click'); // Disable clicking
+            $('.card').off('click');
         }
     }
 
+    // highlight the current player
+        function highlightCurrentPlayer() {
+        if (mode === "multi") {
+            for (let i = 0; i < numPlayers; i++) {
+                $(`#score-player${i + 1}`).parent().toggleClass('current', i === currentPlayerIndex);
+            }
+        }
+    }
+
+
     // handle card clicks
-    $('.card').on('click', function () {
+        $('.card').on('click', function () {
         if ($(this).hasClass('flipped') || flippedCards.length >= 2) return;
 
         $(this).addClass('flipped');
@@ -54,25 +84,38 @@ $(document).ready(function () {
         if (flippedCards.length === 2) {
             const card1 = flippedCards[0];
             const card2 = flippedCards[1];
-
             const value1 = card1.data('card');
             const value2 = card2.data('card');
 
             if (value1 === value2) {
-                scores[currentPlayer] += 1;
-                updateScores();
+                // Match found
+                if (mode === "multi") {
+                    scores[currentPlayerIndex]++;
+                }
                 flippedCards = [];
-                checkGameOver();
+                updateScores();
+                checkGameOver(); // let them continue turn
             } else {
+                // Mismatch
                 setTimeout(() => {
                     card1.removeClass('flipped');
                     card2.removeClass('flipped');
+
+                    if (mode === "multi") {
+                        switchPlayer();
+                    } else {
+                        soloTurns++;
+                        soloMisses++;
+                    }
+
                     flippedCards = [];
-                    switchPlayer();
+                    updateScores();
                 }, 1000);
             }
         }
     });
+
+
 
     // restart game button handler
     $('#restart-button').on('click', function () {
@@ -83,3 +126,23 @@ $(document).ready(function () {
     updateTurnIndicator();
     updateScores();
 });
+
+// Drop down menu for selecting amount of players in multiplayers
+document.addEventListener('DOMContentLoaded', function () {
+    const modeRadios = document.querySelectorAll('input[name="mode"]');
+    const playerSelect = document.getElementById('player-select');
+
+    function togglePlayerSelect() {
+        const mode = document.querySelector('input[name="mode"]:checked').value;
+        playerSelect.style.display = (mode === 'multi') ? 'block' : 'none';
+    }
+
+    // On load
+    togglePlayerSelect();
+
+    // On change
+    modeRadios.forEach(radio => {
+        radio.addEventListener('change', togglePlayerSelect);
+    });
+});
+

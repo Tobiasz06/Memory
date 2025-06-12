@@ -27,9 +27,16 @@ include 'tpl/header.php';
     <div id="turn-indicator">Player 1's turn</div>
 
     <div id="score-board">
-        <p>Player 1: <span id="score-player1">0</span> points</p>
-        <p>Player 2: <span id="score-player2">0</span> points</p>
+        <?php if ($mode === 'multi'): ?>
+            <?php for ($i = 1; $i <= $players; $i++): ?>
+                <p>Player <?= $i ?>: <span id="score-player<?= $i ?>">0</span> points</p>
+            <?php endfor; ?>
+        <?php else: ?>
+            <p>Turns: <span id="solo-turns">0</span></p>
+            <p>Misses: <span id="solo-misses">0</span></p>
+        <?php endif; ?>
     </div>
+
 
     <div id="game-over-message" style="display:none; font-weight: bold; font-size: 1.2em;"></div>
     <button id="restart-button" style="display:none;">🔁 Restart Game</button>
