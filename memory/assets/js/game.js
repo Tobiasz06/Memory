@@ -79,7 +79,7 @@ $(document).ready(function () {
         location.reload(); // simple reload to reset the board
     });
 
-    // Initialize UI
+    // initialize UI
     updateTurnIndicator();
     updateScores();
 });
