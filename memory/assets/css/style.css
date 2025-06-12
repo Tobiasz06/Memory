@@ -198,14 +198,3 @@ footer {
     color: white;
     padding: 16px;
 }
-
-.buttonstart {
-    background-color: transparent;
-    color: black;
-    border: 2px solid #555555;
-}
-
-.buttonstart:hover {
-    background-color: #555555;
-    color: white;
-}

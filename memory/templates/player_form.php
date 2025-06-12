@@ -18,7 +18,5 @@
             <button class="button buttonhard" type="submit" name="pairs" value="10">Hard</button>
         </form>
         <br><br>
-
-        <button class="button buttonstart" type="submit">Start Game</button>
     </form>
 </div>
