@@ -6,20 +6,20 @@ $pairs = $_GET['pairs'] ?? 6;
 include 'tpl/header.php';
 ?>
 
-<!-- Game Area with background -->
-<main class="game-area">
+    <!-- Game Area with background -->
+    <main class="game-area">
 
-    <div class="top-controls">
-        <button onclick="window.location.href='index.php'">Back to menu</button>
-    </div>
+        <div class="top-controls">
+            <button onclick="window.location.href='index.php'">◄ Back to menu</button>
+        </div>
 
-    <!-- Game Info -->
-    <div class="game-mode-info">
-        <p>Game mode: <strong><?= $mode ?></strong> | Players: <strong><?= $players ?></strong> | Pairs: <strong><?= $pairs ?></strong></p>
-    </div>
+        <!-- Game Info -->
+        <div class="game-mode-info">
+            <p>Game mode: <strong><?= $mode ?></strong> | Players: <strong><?= $players ?></strong> | Pairs: <strong><?= $pairs ?></strong></p>
+        </div>
 
-    <?php include 'tpl/game_board.php'; ?>
+        <?php include 'tpl/game_board.php'; ?>
 
-</main>
+    </main>
 
 <?php include 'tpl/footer.php'; ?>
