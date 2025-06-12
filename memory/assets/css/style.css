@@ -117,7 +117,6 @@ footer {
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* Box Menu */
 .container-box {
     background-color: #edeeee;
     border: 5px solid #652208;
@@ -127,4 +126,86 @@ footer {
     margin: 200px auto;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 
+}
+
+#game-board.easy {
+    justify-content: center;
+    margin: 35px auto;
+    grid-template-columns: repeat(3, 120px);
+}
+
+#game-board.medium {
+    justify-content: center;
+    margin: 35px auto;
+    grid-template-columns: repeat(4, 120px);
+}
+
+#game-board.hard {
+    justify-content: center;
+    margin: 35px auto;
+    grid-template-columns: repeat(5, 120px);
+}
+
+.button {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.buttoneasy {
+    background-color: transparent;
+    color: black;
+    border: 2px solid #04AA6D;
+    padding: 16px;
+}
+
+.buttoneasy:hover {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px;
+}
+
+.buttonmedium {
+    background-color: transparent;
+    color: black;
+    border: 2px solid #e1cf0a;
+    padding: 16px;
+}
+
+.buttonmedium:hover {
+    background-color: #e1cf0a;
+    color: white;
+    padding: 16px;
+}
+
+.buttonhard {
+    background-color: transparent;
+    color: black;
+    border: 2px solid #f44336;
+    padding: 16px;
+}
+
+.buttonhard:hover {
+    background-color: #f44336;
+    color: white;
+    padding: 16px;
+}
+
+.buttonstart {
+    background-color: transparent;
+    color: black;
+    border: 2px solid #555555;
+}
+
+.buttonstart:hover {
+    background-color: #555555;
+    color: white;
 }
