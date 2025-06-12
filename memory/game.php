@@ -15,8 +15,16 @@ include 'tpl/header.php';
 
         <!-- Game Info -->
         <div class="game-mode-info">
-            <p>Game mode: <strong><?= $mode ?></strong> | Players: <strong><?= $players ?></strong> | Pairs: <strong><?= $pairs ?></strong></p>
+            <p>
+                Game mode: <strong><?= $mode ?></strong>
+                <?php if ($mode === 'multi'): ?>
+                    | Players: <strong><?= $players ?></strong>
+                <?php endif; ?>
+                | Pairs: <strong><?= $pairs ?></strong>
+            </p>
         </div>
+
+
 
         <?php include 'tpl/game_board.php'; ?>
 
