@@ -17,7 +17,7 @@ include 'tpl/header.php';
         <div class="game-mode-info">
             <p>
                 Game mode: <strong><?= $mode ?></strong>
-                <?php if ($mode === 'multi'): ?>
+                <?php if ($mode === 'Multiplayer'): ?>
                     | Players: <strong><?= $players ?></strong>
                 <?php endif; ?>
                 | Pairs: <strong><?= $pairs ?></strong>

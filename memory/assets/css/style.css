@@ -198,3 +198,7 @@ footer {
     color: white;
     padding: 16px;
 }
+
+#player-select {
+    display: none;
+}
