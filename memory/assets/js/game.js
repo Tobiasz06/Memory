@@ -60,7 +60,7 @@ $(document).ready(function () {
                     message = `🤝 It's a draw between players: ${winners.join(", ")}`;
                 }
             } else {
-                message = `Game over! Total misses: ${soloMisses}`;
+                message = `You win! Total misses: ${soloMisses}`;
             }
 
             $('#game-over-message').text(message).fadeIn();
