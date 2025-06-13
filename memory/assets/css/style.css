@@ -1,4 +1,3 @@
-/* Base Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #6db8e3;
@@ -7,7 +6,6 @@ body {
     text-align: center;
 }
 
-/* Header */
 h1 {
     background-color: #3b4856;
     color: #9fadbd;
@@ -15,14 +13,12 @@ h1 {
     margin: 0;
 }
 
-/* Setup Form and Footer */
 #setup-form, footer {
     margin: 20px auto;
     max-width: 400px;
     text-align: left;
 }
 
-/* Game Area */
 .game-area {
     min-height: calc(100vh - 140px);
     padding: 40px 10px;
@@ -38,7 +34,7 @@ h1 {
 }
 
 .game-mode-info {
-    color: rgb(26, 42, 79, 0.6);
+    color: rgba(86, 112, 171, 0.6);
     font-size: 1.2em;
     font-weight: 400;
     margin-top: 20px;
@@ -47,7 +43,6 @@ h1 {
     text-align: center;
 }
 
-/* Grid - revert to your original */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -58,7 +53,6 @@ h1 {
     padding: 10px;
 }
 
-/* Cards */
 .card {
     width: 100px;
     height: 100px;
@@ -81,7 +75,6 @@ h1 {
     pointer-events: none;
 }
 
-/* Top-left Back Button */
 .top-controls {
     position: fixed;
     top: 20px;
@@ -104,7 +97,6 @@ h1 {
     background-color: #3a5799;
 }
 
-/* Footer */
 footer {
     background-color: #3b4856;
     padding: 10px;
@@ -118,13 +110,12 @@ footer {
 
 .container-box {
     background-color: #e7dfce;
-    border: 15px solid #684330;
+    border: 15px solid #895135;
     border-radius: 25px;
     padding: 80px;
     max-width: 300px;
     margin: 125px auto;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-
 }
 
 #game-board.easy {
@@ -201,6 +192,7 @@ footer {
 #player-select {
     display: none;
 }
+
 .card {
     width: 100px;
     height: 100px;
@@ -231,14 +223,13 @@ footer {
 }
 
 .card-back {
-    transform: rotateY(180deg);}
+    transform: rotateY(180deg);
+}
 
 #score-board p.current {
-    font-weight: bold;
     color: darkgreen;
 }
 
-/* Style for radio options */
 input[type="radio"] {
     accent-color: #3b4856;
     transform: scale(1.2);
@@ -248,4 +239,71 @@ input[type="radio"] {
 #setup-form label {
     font-size: 1.1em;
     margin-right: 15px;
+}
+
+.game-area-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px;
+    background: linear-gradient(135deg, #c3e4fd, #6db8e3);
+    min-height: calc(100vh - 120px);
+    gap: 30px;
+}
+
+.left-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-panel {
+    width: 240px;
+    height: 400px;
+    background-color: #f5f1e6;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 10px solid #895135;
+    border-radius: 12px;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+    align-self: center;
+    position: relative;
+}
+
+.right-panel h2 {
+    font-size: 1.6rem;
+    color: #20335f;
+    margin-bottom: 16px;
+    border-bottom: 3px solid #ccc;
+    padding-bottom: 8px;
+}
+
+.mode-label {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #2674ce;
+    margin-bottom: 15px;
+}
+
+#score-board {
+    margin-bottom: auto;
+}
+
+#score-board p {
+    margin-bottom: 0.25rem;
+    margin-top: 0rem;
+    font-size: 1rem;
+    color: #1e5ea7;
+}
+
+#turn-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-weight: bold;
+    color: #1e5ea7;
+    font-size: 1.8rem;
 }
