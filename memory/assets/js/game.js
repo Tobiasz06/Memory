@@ -28,7 +28,6 @@ $(document).ready(function () {
                 $(`#score-player${index + 1}`).text(score);
             });
         } else {
-            $('#solo-turns').text(soloTurns);
             $('#solo-misses').text(soloMisses);
         }
     }

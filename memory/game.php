@@ -36,7 +36,6 @@ include 'tpl/header.php';
                     <p>Player <?= $i ?>: <span id="score-player<?= $i ?>">0</span> points</p>
                 <?php endfor; ?>
             <?php else: ?>
-                <p>Turns: <span id="solo-turns">0</span></p>
                 <p>Misses: <span id="solo-misses">0</span></p>
             <?php endif; ?>
         </div>
