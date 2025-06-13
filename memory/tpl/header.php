@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<div class="page-wrapper">
-    <header class="game-header">
+<div>
+    <header>
         <h1>Memory Match</h1>
     </header>
