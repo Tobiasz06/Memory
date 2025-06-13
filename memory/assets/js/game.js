@@ -1,14 +1,15 @@
 $(document).ready(function () {
     let flippedCards = [];
     const mode = new URLSearchParams(window.location.search).get("mode") || "solo";
-    const totalPairs = $('.card').length / 2;
 
     // Multiplayer support
     const numPlayers = mode === 'multi' ? parseInt(new URLSearchParams(window.location.search).get("players")) || 2 : 1;
     let currentPlayerIndex = 0;
     let scores = Array(numPlayers).fill(0);
-    let soloTurns = 0;
+    let soloMatchedPairs = 0;
     let soloMisses = 0;
+
+    const totalPairs = $('.card').length / 2;
 
 
     // update whose turn it is
@@ -40,8 +41,13 @@ $(document).ready(function () {
 
 
     // check if game is over and show winner
-        function checkGameOver() {
-        const matchedPairs = scores.reduce((a, b) => a + b, 0);
+    function checkGameOver() {
+        let matchedPairs;
+        if (mode === "multi") {
+            matchedPairs = scores.reduce((a, b) => a + b, 0);
+        } else {
+            matchedPairs = soloMatchedPairs;
+        }
         if (matchedPairs === totalPairs) {
             let message = "";
 
@@ -54,7 +60,7 @@ $(document).ready(function () {
                     message = `🤝 It's a draw between players: ${winners.join(", ")}`;
                 }
             } else {
-                message = `Game over! Total turns: ${soloTurns}, Misses: ${soloMisses}`;
+                message = `Game over! Total misses: ${soloMisses}`;
             }
 
             $('#game-over-message').text(message).fadeIn();
@@ -90,6 +96,8 @@ $(document).ready(function () {
                 // Match found
                 if (mode === "multi") {
                     scores[currentPlayerIndex]++;
+                } else {
+                    soloMatchedPairs++;
                 }
                 flippedCards = [];
                 updateScores();
@@ -103,7 +111,6 @@ $(document).ready(function () {
                     if (mode === "multi") {
                         switchPlayer();
                     } else {
-                        soloTurns++;
                         soloMisses++;
                     }
 

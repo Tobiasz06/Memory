@@ -22,7 +22,7 @@ include 'tpl/header.php';
     <aside class="right-panel">
         <h2>Scoreboard</h2>
 
-        <div class="mode-label">
+        <div id="turn-indicator" class="mode-label">
             <?php if ($mode === 'multi'): ?>
                 Player 1's turn
             <?php else: ?>
