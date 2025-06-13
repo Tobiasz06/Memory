@@ -84,7 +84,7 @@ h1 {
 }
 
 .top-controls button {
-    background-color: #20335f;
+    background-color: #8796b9;
     color: rgb(255, 255, 255);
     border: none;
     padding: 8px 16px;
@@ -95,7 +95,7 @@ h1 {
 }
 
 .top-controls button:hover {
-    background-color: #3a5799;
+    background-color: #6784c6;
 }
 
 footer {
