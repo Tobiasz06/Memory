@@ -13,7 +13,7 @@ include 'tpl/header.php';
             <button onclick="window.location.href='index.php'">◄ Back to menu</button>
         </div>
 
-        <div id="game-over-message" style="display:none; font-weight: bold; font-size: 1.2em;"></div>
+        <div id="game-over-message" style="display:none;"></div>
         <button id="restart-button" style="display:none;">🔁 Restart Game</button>
 
         <?php include 'tpl/game_board.php'; ?>

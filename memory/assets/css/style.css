@@ -352,3 +352,37 @@ input[type="radio"] {
     display: block;
     margin: 2em auto 0 auto;
 }
+#game-over-message {
+    display: none;
+    position: relative;
+    margin: 30px auto 10px auto;
+    background: linear-gradient(135deg, #ff4d4d, #ff6a6a);
+    color: white;
+    padding: 20px 40px;
+    font-size: 1.6em;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.6);
+    z-index: 1000;
+    max-width: 70%;
+    animation: popInGlow 0.8s ease forwards;
+}
+
+@keyframes popInGlow {
+    0% {
+        opacity: 0;
+        transform: scale(0.85) translateY(-20px);
+        filter: brightness(1.2);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05) translateY(5px);
+        filter: brightness(1.4);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        filter: brightness(1);
+    }
+}
+
