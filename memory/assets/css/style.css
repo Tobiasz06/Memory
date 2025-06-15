@@ -111,6 +111,20 @@ footer {
     border-bottom-right-radius: 12px;
 }
 
+@keyframes fadeOutFooter {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+footer.fade-out {
+  animation: fadeOutFooter 1s ease forwards;
+}
+
 .container-box {
     background-color: #e7dfce;
     border: 15px solid #895135;

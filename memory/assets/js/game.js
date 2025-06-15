@@ -152,3 +152,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+
+//Fades the footer out after 5 seconds to make more space for the grid
+function fadeOutFooter(afterMs = 5000) {
+  setTimeout(() => {
+    const footer = document.querySelector('footer');
+    if (footer) {
+      footer.classList.add('fade-out');
+
+      footer.addEventListener('animationend', () => {
+        footer.style.display = 'none';
+      }, { once: true });
+    }
+  }, afterMs);
+}
+
+window.addEventListener('load', () => {
+  fadeOutFooter(10000);
+});
+
