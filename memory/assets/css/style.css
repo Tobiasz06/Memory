@@ -101,7 +101,7 @@ h1 {
 footer {
     background-color: #3b4856;
     padding: 10px;
-    font-size: 0.9em;
+    font-size: 0.9rem;
     color: #dbe0e7;
     position: fixed;
     bottom: 0;
@@ -259,7 +259,7 @@ input[type="radio"] {
 }
 
 #setup-form label {
-    font-size: 1.1em;
+    font-size: 1.1rem;
     margin-right: 15px;
 }
 
@@ -325,45 +325,39 @@ input[type="radio"] {
 }
 
 #message {
-    font-size: 2em;
-    margin-bottom: 2em;
+    font-size: 2rem;
+    margin-bottom: 2rem;
     text-align: center;
-}
-
-#restart-button,
-.top-controls button {
-    background: #3498db;
-    color: #fff;
-    border: none;
-    padding: 0.75em 2em;
-    border-radius: 6px;
-    font-size: 1.1em;
-    cursor: pointer;
-    margin: 0.5em 0;
-    transition: background 0.2s;
-}
-
-#restart-button:hover,
-.top-controls button:hover {
-    background: #217dbb;
 }
 
 #restart-button {
+    background: #4C51BF;
+    color: #fff;
+    border: none;
+    margin-top: 0.5rem;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s;
     display: block;
-    margin: 2em auto 0 auto;
+
 }
+
+#restart-button:hover {
+    background: #5A67D8;
+}
+
 #game-over-message {
     display: none;
-    position: relative;
     margin: 30px auto 10px auto;
-    background: linear-gradient(135deg, #ff4d4d, #ff6a6a);
+    background: #38A169;
     color: white;
-    padding: 20px 40px;
-    font-size: 1.6em;
+    padding: 15px 30px;
+    font-size: 1.6rem;
     font-weight: 700;
     text-align: center;
     border-radius: 12px;
-    box-shadow: 0 0 10px rgba(255, 77, 77, 0.6);
     z-index: 1000;
     max-width: 70%;
     animation: popInGlow 0.8s ease forwards;
@@ -372,13 +366,13 @@ input[type="radio"] {
 @keyframes popInGlow {
     0% {
         opacity: 0;
-        transform: scale(0.85) translateY(-20px);
-        filter: brightness(1.2);
+        transform: scale(0.95) translateY(-10px);
+        filter: brightness(1.05);
     }
     50% {
         opacity: 1;
-        transform: scale(1.05) translateY(5px);
-        filter: brightness(1.4);
+        transform: scale(1.02) translateY(2px);
+        filter: brightness(1.08);
     }
     100% {
         transform: scale(1) translateY(0);
