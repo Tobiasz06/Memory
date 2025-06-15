@@ -1,5 +1,5 @@
 <?php
-// Determine number of pairs and difficulty level
+// determine number of pairs and difficulty level
 $pairs = isset($_GET['pairs']) ? (int)$_GET['pairs'] : 3;
 
 switch ($pairs) {
@@ -9,16 +9,16 @@ switch ($pairs) {
     default: $difficulty = 'easy';
 }
 
-// All possible unique card types
+// all possible unique card types
 $cardTypes = [
     "apple", "avocado", "banana", "blueberries",
     "cherry", "grape", "kiwi", "lemon", "mango", "peach"
 ];
 
-// Limit to the number of needed pairs
+// limit to the number of needed pairs
 $selectedCards = array_slice($cardTypes, 0, $pairs);
 
-// Duplicate to form pairs and shuffle
+// duplicate to form pairs and shuffle
 $cards = array_merge($selectedCards, $selectedCards);
 shuffle($cards);
 ?>

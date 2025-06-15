@@ -3,6 +3,7 @@ $mode = $_GET['mode'] ?? 'solo';
 $players = $_GET['players'] ?? 2;
 $pairs = $_GET['pairs'] ?? 6;
 
+// load the top part of the html
 include 'tpl/header.php';
 ?>
 
@@ -13,15 +14,20 @@ include 'tpl/header.php';
             <button onclick="window.location.href='index.php'">◄ Back to menu</button>
         </div>
 
+        <!-- shows when the game ends -->
         <div id="game-over-message" style="display:none;"></div>
+
+        <!-- restart button hidden at first -->
         <button id="restart-button" style="display:none;">🔁 Restart Game</button>
 
+        <!-- load the board with cards -->
         <?php include 'tpl/game_board.php'; ?>
     </div>
 
     <aside class="right-panel">
         <h2>Scoreboard</h2>
 
+        <!-- shows whose turn it is or solo mode -->
         <div id="turn-indicator" class="mode-label">
             <?php if ($mode === 'multi'): ?>
                 Player 1's turn
@@ -30,6 +36,7 @@ include 'tpl/header.php';
             <?php endif; ?>
         </div>
 
+        <!-- scoreboard for players or miss counter for solo -->
         <div id="score-board">
             <?php if ($mode === 'multi'): ?>
                 <?php for ($i = 1; $i <= $players; $i++): ?>
@@ -40,6 +47,7 @@ include 'tpl/header.php';
             <?php endif; ?>
         </div>
 
+        <!-- shows selected settings -->
         <div class="game-mode-info">
             <p>
                 Game mode: <strong><?= $mode ?></strong>

@@ -1,9 +1,11 @@
 <div class="container-box">
     <form action="game.php" method="get" id="setup-form">
+        <!-- lets the user choose game mode -->
         <label>Mode:</label><br>
         <input type="radio" name="mode" value="solo" checked> Solo<br>
         <input type="radio" name="mode" value="multi"> Multiplayer<br><br>
 
+        <!-- this block appears only in multiplayer to choose number of players -->
         <div id="player-select" style="display: none;">
             <label>Number of Players:</label><br>
             <button class="buttonplayers" type="button" data-value="2">2</button>
@@ -13,6 +15,7 @@
             <br><br>
         </div>
 
+        <!-- lets the user pick difficulty level -->
         <label>Select Difficulty:</label><br>
         <button class="button buttoneasy" type="submit" name="pairs" value="3">Easy</button>
         <button class="button buttonmedium" type="submit" name="pairs" value="6">Medium</button>
@@ -26,6 +29,7 @@
     const playerButtons = document.querySelectorAll('.buttonplayers');
     const playersInput = document.getElementById('players-input');
 
+    // this function shows or hides the player number selector
     function updateMode() {
         const selectedMode = document.querySelector('input[name="mode"]:checked').value;
         if (selectedMode === 'multi') {
@@ -37,10 +41,12 @@
         }
     }
 
+    //  update view when radio button changes
     modeRadios.forEach(radio => {
         radio.addEventListener('change', updateMode);
     });
 
+    // save selected number of players and highlights the button
     playerButtons.forEach(button => {
         button.addEventListener('click', () => {
             playersInput.value = button.dataset.value;
@@ -50,5 +56,6 @@
         });
     });
 
+    // run at start to apply correct mode
     updateMode();
 </script>

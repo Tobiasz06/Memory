@@ -2,7 +2,7 @@ $(document).ready(function () {
     let flippedCards = [];
     const mode = new URLSearchParams(window.location.search).get("mode") || "solo";
 
-    // Multiplayer support
+    // multiplayer support
     const numPlayers = mode === 'multi' ? parseInt(new URLSearchParams(window.location.search).get("players")) || 2 : 1;
     let currentPlayerIndex = 0;
     let scores = Array(numPlayers).fill(0);
@@ -133,7 +133,7 @@ $(document).ready(function () {
     updateScores();
 });
 
-// Drop down menu for selecting amount of players in multiplayers
+// drop down menu for selecting amount of players in multiplayers
 document.addEventListener('DOMContentLoaded', function () {
     const modeRadios = document.querySelectorAll('input[name="mode"]');
     const playerSelect = document.getElementById('player-select');
@@ -143,17 +143,17 @@ document.addEventListener('DOMContentLoaded', function () {
         playerSelect.style.display = (mode === 'multi') ? 'block' : 'none';
     }
 
-    // On load
+    // on load
     togglePlayerSelect();
 
-    // On change
+    // on change
     modeRadios.forEach(radio => {
         radio.addEventListener('change', togglePlayerSelect);
     });
 });
 
 
-//Fades the footer out after 5 seconds to make more space for the grid
+//fades the footer out after 5 seconds to make more space for the grid
 function fadeOutFooter(afterMs = 5000) {
   setTimeout(() => {
     const footer = document.querySelector('footer');
