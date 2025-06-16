@@ -2,37 +2,29 @@
 include 'tpl/header.php';
 
 // Get mode, players, and pairs from GET parameters
-$mode = $_GET['mode'] ?? 'solo';
-$players = isset($_GET['players']) ? (int)$_GET['players'] : 2;
-$pairs = $_GET['pairs'] ?? 6;
+$gamemode = $_GET['mode'] ?? '';
+$players = (int)($_GET['players'] ?? 1);
+$pairs = $_GET['pairs'] ?? '';
 
-// Prepare form action to go to game.php with all parameters
-$action = "game.php?mode=" . urlencode($mode) . "&players=" . urlencode($players) . "&pairs=" . urlencode($pairs);
+// Always show at least one username input
+$numInputs = max(1, $players);
 ?>
 
 <div class="top-controls">
     <button onclick="window.location.href='index.php'">◄ Back to menu</button>
 </div>
 
-<div class="container-box">
-    <form action="<?= $action ?>" method="get" id="username-form">
-        <input type="hidden" name="mode" value="<?= htmlspecialchars($mode) ?>">
-        <input type="hidden" name="players" value="<?= htmlspecialchars($players) ?>">
-        <input type="hidden" name="pairs" value="<?= htmlspecialchars($pairs) ?>">
-
-        <?php if ($mode === 'multi'): ?>
-            <label>Enter player names:</label><br>
-            <?php for ($i = 1; $i <= $players; $i++): ?>
-                <input type="text" name="player<?= $i ?>" placeholder="Player <?= $i ?> name"><br>
-            <?php endfor; ?>
-        <?php else: ?>
-            <label>Your name:</label>
-            <input type="text" name="player1" placeholder="Your name"><br>
-        <?php endif; ?>
-
-        <br>
-        <button class="button" type="submit">Start Game</button>
-    </form>
-</div>
+<form method="get" action="game.php" class="container-box" id="username-form">
+    <input type="hidden" name="mode" value="<?php echo htmlspecialchars($gamemode); ?>">
+    <input type="hidden" name="players" value="<?php echo htmlspecialchars($players); ?>">
+    <input type="hidden" name="pairs" value="<?php echo htmlspecialchars($pairs); ?>">
+    <?php
+    for ($i = 1; $i <= $numInputs; $i++) {
+        echo "<label class='username-label'>Username for Player $i:</label>
+            <input class='username-input' type='text' name='username[]' required autocomplete='off'><br>";
+    }
+    ?>
+    <button type="submit" class="start-game-btn">Start Game</button>
+</form>
 
 <?php include 'tpl/footer.php'; ?>
