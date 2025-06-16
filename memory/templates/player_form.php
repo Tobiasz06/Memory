@@ -1,13 +1,11 @@
 <div class="container-box">
     <form action="username.php" method="get" id="setup-form">
         <!-- lets the user choose connection type -->
-        <!-- lets the user choose connection type -->
         <label>Connection Type:</label><br>
         <button class="buttonconnection" type="button" data-value="local">Local</button>
         <button class="buttonconnection" type="button" data-value="online">Online</button>
         <input type="hidden" name="connection" id="connection-input">
         <br><br>
-
 
         <!-- lets the user choose game mode -->
         <label>Mode:</label><br>
@@ -29,18 +27,21 @@
         <button class="button buttoneasy" type="submit" name="pairs" value="3">Easy</button>
         <button class="button buttonmedium" type="submit" name="pairs" value="6">Medium</button>
         <button class="button buttonhard" type="submit" name="pairs" value="10">Hard</button>
+
+        <!-- warning message placeholder -->
+        <p id="warning-message" style="color: red; font-weight: bold; display: none;"></p>
     </form>
 </div>
-
 
 <script>
     const modeRadios = document.querySelectorAll('input[name="mode"]');
     const playerSelect = document.getElementById('player-select');
     const playerButtons = document.querySelectorAll('.buttonplayers');
     const playersInput = document.getElementById('players-input');
-
     const connectionButtons = document.querySelectorAll('.buttonconnection');
     const connectionInput = document.getElementById('connection-input');
+    const setupForm = document.getElementById('setup-form');
+    const warningMsg = document.getElementById('warning-message');
 
     function updateMode() {
         const selectedMode = document.querySelector('input[name="mode"]:checked').value;
@@ -50,6 +51,7 @@
             playerSelect.style.display = 'none';
             playersInput.value = '';
             playerButtons.forEach(btn => btn.classList.remove('selected'));
+            warningMsg.style.display = 'none';
         }
     }
 
@@ -62,6 +64,7 @@
             playersInput.value = button.dataset.value;
             playerButtons.forEach(btn => btn.classList.remove('selected'));
             button.classList.add('selected');
+            warningMsg.style.display = 'none';
         });
     });
 
@@ -73,12 +76,20 @@
         });
     });
 
+    setupForm.addEventListener('submit', function(event) {
+        const selectedMode = document.querySelector('input[name="mode"]:checked').value;
+        if (selectedMode === 'multi' && playersInput.value === '') {
+            event.preventDefault();
+            warningMsg.textContent = "Please select the number of players.";
+            warningMsg.style.display = 'block';
+        }
+    });
+
     window.addEventListener('DOMContentLoaded', () => {
         updateMode();
-
         const defaultConnection = document.querySelector('.buttonconnection[data-value="local"]');
         if (defaultConnection) {
-            defaultConnection.click(); 
+            defaultConnection.click(); // sets default to local
         }
     });
 </script>
