@@ -3,6 +3,12 @@ $mode = $_GET['mode'] ?? 'solo';
 $players = $_GET['players'] ?? 2;
 $pairs = $_GET['pairs'] ?? 6;
 
+$playerNames = [];
+for ($i = 1; $i <= $players; $i++) {
+    $name = $_GET["player$i"] ?? "Player $i";
+    $playerNames[] = $name !== '' ? $name : "Player $i";
+}
+
 // load the top part of the html
 include 'tpl/header.php';
 ?>
@@ -39,9 +45,9 @@ include 'tpl/header.php';
         <!-- scoreboard for players or miss counter for solo -->
         <div id="score-board">
             <?php if ($mode === 'multi'): ?>
-                <?php for ($i = 1; $i <= $players; $i++): ?>
-                    <p>Player <?= $i ?>: <span id="score-player<?= $i ?>">0</span> points</p>
-                <?php endfor; ?>
+                <?php foreach ($playerNames as $index => $name): ?>
+                    <p><?= htmlspecialchars($name) ?>: <span id="score-player<?= $index + 1 ?>">0</span> points</p>
+                <?php endforeach; ?>
             <?php else: ?>
                 <p>Misses: <span id="solo-misses">0</span></p>
             <?php endif; ?>
