@@ -112,17 +112,17 @@ footer {
 }
 
 @keyframes fadeOutFooter {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
 }
 
 footer.fade-out {
-  animation: fadeOutFooter 1s ease forwards; /* fade out animation */
+    animation: fadeOutFooter 1s ease forwards; /* fade out animation */
 }
 
 .container-box {
@@ -155,7 +155,7 @@ footer.fade-out {
 }
 
 .buttonplayers {
-    background-color: #5A82D1; 
+    background-color: #5A82D1;
     color: white;
     border: 2px solid #3B5CA5;
     padding: 10px 20px;
@@ -221,6 +221,26 @@ footer.fade-out {
 .buttonhard:hover {
     background-color: #c62828;
     color: white;
+}
+
+.buttonconnection {
+    background-color: #2c2c2c;
+    color: #cccccc;
+    border: 2px solid #555555;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.buttonconnection:hover {
+    background-color: #3a3a3a;
+}
+
+.buttonconnection.selected {
+    background-color: #2196F3;
+    color: white;
+    border-color: #1976D2;
 }
 
 #player-select {
@@ -448,4 +468,3 @@ input[type="radio"] {
     text-align: center;
     margin-bottom: 4px;
 }
-
