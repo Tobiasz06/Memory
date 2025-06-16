@@ -11,15 +11,14 @@ $(document).ready(function () {
 
     const totalPairs = $('.card').length / 2;
 
-
     // update whose turn it is
     function updateTurnIndicator() {
         if (mode === "multi") {
-            const name = (window.playerNames && window.playerNames[currentPlayerIndex]) 
-                ? window.playerNames[currentPlayerIndex] 
+            const name = (window.playerNames && window.playerNames[currentPlayerIndex])
+                ? window.playerNames[currentPlayerIndex]
                 : `Player ${currentPlayerIndex + 1}`;
-            $('#turn-indicator').text(`${name}'s turn`);
-            highlightCurrentPlayer();  
+            $('#player-turn-label').text(`${name}'s turn`);
+            highlightCurrentPlayer();
         } else {
             $('#turn-indicator').text(`Solo Mode`);
         }
@@ -42,7 +41,6 @@ $(document).ready(function () {
         updateTurnIndicator();
     }
 
-
     // check if game is over and show winner
     function checkGameOver() {
         let matchedPairs;
@@ -56,11 +54,13 @@ $(document).ready(function () {
 
             if (mode === "multi") {
                 const maxScore = Math.max(...scores);
-                const winners = scores.map((s, i) => s === maxScore ? i + 1 : null).filter(x => x);
+                const winners = scores.map((s, i) => s === maxScore ? i : null).filter(x => x !== null);
                 if (winners.length === 1) {
-                    message = `🏆 Player ${winners[0]} wins!`;
+                    const winnerName = window.playerNames?.[winners[0]] || `Player ${winners[0] + 1}`;
+                    message = `🏆 ${winnerName} wins!`;
                 } else {
-                    message = `🤝 It's a draw between players: ${winners.join(", ")}`;
+                    const names = winners.map(i => window.playerNames?.[i] || `Player ${i + 1}`);
+                    message = `🤝 It's a draw between: ${names.join(", ")}`;
                 }
             } else {
                 message = `You win! Total misses: ${soloMisses}`;
@@ -73,7 +73,7 @@ $(document).ready(function () {
     }
 
     // highlight the current player
-        function highlightCurrentPlayer() {
+    function highlightCurrentPlayer() {
         if (mode === "multi") {
             for (let i = 0; i < numPlayers; i++) {
                 $(`#score-player${i + 1}`).parent().toggleClass('current', i === currentPlayerIndex);
@@ -81,9 +81,8 @@ $(document).ready(function () {
         }
     }
 
-
     // handle card clicks
-        $('.card').on('click', function () {
+    $('.card').on('click', function () {
         if ($(this).hasClass('flipped') || flippedCards.length >= 2) return;
 
         $(this).addClass('flipped');
@@ -124,8 +123,6 @@ $(document).ready(function () {
         }
     });
 
-
-
     // restart game button handler
     $('#restart-button').on('click', function () {
         location.reload(); // simple reload to reset the board
@@ -136,7 +133,7 @@ $(document).ready(function () {
     updateScores();
 });
 
-// drop down menu for selecting amount of players in multiplayers
+// dropdown menu for selecting amount of players in multiplayer
 document.addEventListener('DOMContentLoaded', function () {
     const modeRadios = document.querySelectorAll('input[name="mode"]');
     const playerSelect = document.getElementById('player-select');
@@ -155,22 +152,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-
-//fades the footer out after 5 seconds to make more space for the grid
-function fadeOutFooter(afterMs = 5000) {
-  setTimeout(() => {
-    const footer = document.querySelector('footer');
-    if (footer) {
-      footer.classList.add('fade-out');
-
-      footer.addEventListener('animationend', () => {
-        footer.style.display = 'none';
-      }, { once: true });
-    }
-  }, afterMs);
+// fades the footer out after 10 seconds to make more space for the grid
+function fadeOutFooter(afterMs = 10000) {
+    setTimeout(() => {
+        const footer = document.querySelector('footer');
+        if (footer) {
+            footer.classList.add('fade-out');
+            footer.addEventListener('animationend', () => {
+                footer.style.display = 'none';
+            }, { once: true });
+        }
+    }, afterMs);
 }
 
 window.addEventListener('load', () => {
-  fadeOutFooter(10000);
+    fadeOutFooter(10000);
 });
-

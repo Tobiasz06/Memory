@@ -3,10 +3,11 @@ $mode = $_GET['mode'] ?? 'solo';
 $players = $_GET['players'] ?? 2;
 $pairs = $_GET['pairs'] ?? 6;
 
-$playerNames = [];
-for ($i = 1; $i <= $players; $i++) {
-    $name = $_GET["player$i"] ?? "Player $i";
-    $playerNames[] = $name !== '' ? $name : "Player $i";
+// Get the player names from username[] array
+$playerNames = $_GET['username'] ?? [];
+for ($i = 0; $i < $players; $i++) {
+    $name = $playerNames[$i] ?? "Player " . ($i + 1);
+    $playerNames[$i] = $name !== '' ? $name : "Player " . ($i + 1);
 }
 
 // load the top part of the html
@@ -36,7 +37,7 @@ include 'tpl/header.php';
         <!-- shows whose turn it is or solo mode -->
         <div id="turn-indicator" class="mode-label">
             <?php if ($mode === 'multi'): ?>
-                Player 1's turn
+                <span id="player-turn-label"><?= htmlspecialchars($playerNames[0]) ?>'s turn</span>
             <?php else: ?>
                 Solo Mode
             <?php endif; ?>
@@ -56,20 +57,19 @@ include 'tpl/header.php';
         <!-- shows selected settings -->
         <div class="game-mode-info">
             <p>
-                Game mode: <strong><?= $mode ?></strong>
+                Game mode: <strong><?= htmlspecialchars($mode) ?></strong>
                 <?php if ($mode === 'multi'): ?>
-                    | Players: <strong><?= $players ?></strong>
+                    | Players: <strong><?= htmlspecialchars($players) ?></strong>
                 <?php endif; ?>
-                | Pairs: <strong><?= $pairs ?></strong>
+                | Pairs: <strong><?= htmlspecialchars($pairs) ?></strong>
             </p>
         </div>
     </aside>
-
 
 </main>
 
 <?php include 'tpl/footer.php'; ?>
 
 <script>
-  window.playerNames = <?= json_encode($playerNames) ?>;
+    window.playerNames = <?= json_encode($playerNames) ?>;
 </script>
