@@ -17,9 +17,14 @@
 
         <!-- lets the user pick difficulty level -->
         <label>Select Difficulty:</label><br>
+
+        <!-- warning message placeholder -->
+
         <button class="button buttoneasy" type="submit" name="pairs" value="3">Easy</button>
         <button class="button buttonmedium" type="submit" name="pairs" value="6">Medium</button>
         <button class="button buttonhard" type="submit" name="pairs" value="10">Hard</button>
+
+        <p id="warning-message" style="color: red; font-weight: bold; display: none;"></p>
     </form>
 </div>
 
@@ -28,6 +33,8 @@
     const playerSelect = document.getElementById('player-select');
     const playerButtons = document.querySelectorAll('.buttonplayers');
     const playersInput = document.getElementById('players-input');
+    const setupForm = document.getElementById('setup-form');
+    const warningMsg = document.getElementById('warning-message');
 
     function updateMode() {
         const selectedMode = document.querySelector('input[name="mode"]:checked').value;
@@ -37,6 +44,7 @@
             playerSelect.style.display = 'none';
             playersInput.value = '';
             playerButtons.forEach(btn => btn.classList.remove('selected'));
+            warningMsg.style.display = 'none';
         }
     }
 
@@ -49,7 +57,17 @@
             playersInput.value = button.dataset.value;
             playerButtons.forEach(btn => btn.classList.remove('selected'));
             button.classList.add('selected');
+            warningMsg.style.display = 'none';
         });
+    });
+
+    setupForm.addEventListener('submit', function(event) {
+        const selectedMode = document.querySelector('input[name="mode"]:checked').value;
+        if (selectedMode === 'multi' && playersInput.value === '') {
+            event.preventDefault();
+            warningMsg.textContent = "Please select the number of players .";
+            warningMsg.style.display = 'block';
+        }
     });
 
     updateMode();
