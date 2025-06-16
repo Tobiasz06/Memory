@@ -10,6 +10,10 @@ $pairs = $_GET['pairs'] ?? 6;
 $action = "game.php?mode=" . urlencode($mode) . "&players=" . urlencode($players) . "&pairs=" . urlencode($pairs);
 ?>
 
+<div class="top-controls">
+    <button onclick="window.location.href='index.php'">◄ Back to menu</button>
+</div>
+
 <div class="container-box">
     <form action="<?= $action ?>" method="get" id="username-form">
         <input type="hidden" name="mode" value="<?= htmlspecialchars($mode) ?>">
