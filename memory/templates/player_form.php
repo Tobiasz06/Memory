@@ -1,5 +1,14 @@
 <div class="container-box">
     <form action="username.php" method="get" id="setup-form">
+        <!-- lets the user choose connection type -->
+        <!-- lets the user choose connection type -->
+        <label>Connection Type:</label><br>
+        <button class="buttonconnection" type="button" data-value="local">Local</button>
+        <button class="buttonconnection" type="button" data-value="online">Online</button>
+        <input type="hidden" name="connection" id="connection-input">
+        <br><br>
+
+
         <!-- lets the user choose game mode -->
         <label>Mode:</label><br>
         <input type="radio" name="mode" value="solo" checked> Solo<br>
@@ -23,11 +32,15 @@
     </form>
 </div>
 
+
 <script>
     const modeRadios = document.querySelectorAll('input[name="mode"]');
     const playerSelect = document.getElementById('player-select');
     const playerButtons = document.querySelectorAll('.buttonplayers');
     const playersInput = document.getElementById('players-input');
+
+    const connectionButtons = document.querySelectorAll('.buttonconnection');
+    const connectionInput = document.getElementById('connection-input');
 
     function updateMode() {
         const selectedMode = document.querySelector('input[name="mode"]:checked').value;
@@ -52,5 +65,20 @@
         });
     });
 
-    updateMode();
+    connectionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            connectionInput.value = button.dataset.value;
+            connectionButtons.forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+        });
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        updateMode();
+
+        const defaultConnection = document.querySelector('.buttonconnection[data-value="local"]');
+        if (defaultConnection) {
+            defaultConnection.click(); 
+        }
+    });
 </script>
