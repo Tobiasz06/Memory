@@ -15,8 +15,11 @@ $(document).ready(function () {
     // update whose turn it is
     function updateTurnIndicator() {
         if (mode === "multi") {
-            $('#turn-indicator').text(`Player ${currentPlayerIndex + 1}'s turn`);
-            highlightCurrentPlayer();  // 👈 this will "activate" it
+            const name = (window.playerNames && window.playerNames[currentPlayerIndex]) 
+                ? window.playerNames[currentPlayerIndex] 
+                : `Player ${currentPlayerIndex + 1}`;
+            $('#turn-indicator').text(`${name}'s turn`);
+            highlightCurrentPlayer();  
         } else {
             $('#turn-indicator').text(`Solo Mode`);
         }

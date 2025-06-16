@@ -69,3 +69,7 @@ include 'tpl/header.php';
 </main>
 
 <?php include 'tpl/footer.php'; ?>
+
+<script>
+  window.playerNames = <?= json_encode($playerNames) ?>;
+</script>
