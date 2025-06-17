@@ -3,7 +3,7 @@
         <!-- lets the user choose connection type -->
         <label>Connection Type:</label><br>
         <button class="buttonconnection" type="button" data-value="local">Local</button>
-        <button class="buttonconnection" type="button" data-value="online">Online</button>
+        <button class="buttonconnection" type="button" data-value="online" onclick="window.location.href='online.php'">Online</button>
         <input type="hidden" name="connection" id="connection-input">
         <br><br>
 
