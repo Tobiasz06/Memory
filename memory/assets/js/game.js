@@ -129,6 +129,26 @@ $(document).ready(function () {
             if (!gameState.flipped.includes(cardIndex)) {
                 gameState.flipped.push(cardIndex);
                 syncToLobby(gameState);
+
+                // Check after short delay if the cards have been flipped
+                setTimeout(() => {
+                    if (gameState.flipped.length === 2) {
+                        const idx1 = gameState.flipped[0];
+                        const idx2 = gameState.flipped[1];
+                        const board = gameState.board || [];
+                        if (board[idx1] === board[idx2]) {
+                            // Match found
+                            gameState.matched = (gameState.matched || []).concat([idx1, idx2]);
+                            gameState.scores[gameState.currentPlayerIndex]++;
+                            // Flipped cards reset
+                            gameState.flipped = [];
+                        } else {
+                            gameState.currentPlayerIndex = (gameState.currentPlayerIndex + 1) % (window.playerNames.length || 2);
+                            gameState.flipped = [];
+                        }
+                        syncToLobby(gameState);
+                    }
+                }, 700);
             }
         } else {
             $(this).addClass('flipped');
