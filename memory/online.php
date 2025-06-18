@@ -4,7 +4,7 @@
     <button onclick="window.location.href='index.php'">◄ Back to menu</button>
 </div>
 <div class="center-vertical-wrapper">
-    <div class="container-box" id="online-lobby-app">
+    <div class="container-box waiting-lobby" id="online-lobby-app">
         <h2>Online Multiplayer</h2>
         <div id="lobby-create">
             <h3>Create Lobby</h3>
@@ -66,7 +66,6 @@ $(document).on('click', '.join-lobby', function() {
     $('#lobby-join').show();
     $('#lobby-create').hide();
     $('#lobby-list-section').hide();
-    $('#join-lobby-info').text('Lobby: ' + lobbyId);
     $('#join-lobby-btn').data('id', lobbyId);
 });
 $('#cancel-join-btn').on('click', function() {

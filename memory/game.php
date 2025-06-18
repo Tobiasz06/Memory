@@ -26,9 +26,11 @@ if ($lobbyId) {
         include 'tpl/header.php';
         ?>
         <div class="center-vertical-wrapper">
-            <div class="container-box">
+            <div class="top-controls">
+                <button onclick="window.location.href='index.php'">◄ Back to menu</button>
+            </div>
+            <div class="container-box waiting-lobby">
                 <h2>Lobby: <?= htmlspecialchars($lobby['name']) ?></h2>
-                <p>Lobby ID: <strong><?= htmlspecialchars($lobbyId) ?></strong></p>
                 <p>Players joined:</p>
                 <ul id="player-list">
                     <?php foreach ($playerNames as $name): ?>
