@@ -508,7 +508,7 @@ input[type="radio"] {
 }
 
 .online-page .center-vertical-wrapper {
-    height: calc(100vh - 80px); /* or 100vh if you want full viewport */
+    height: 100vh; 
     display: flex;
     flex-direction: column;
     justify-content: center;
