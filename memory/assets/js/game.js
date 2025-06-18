@@ -179,6 +179,9 @@ $(document).ready(function () {
                     setTimeout(() => {
                         card1.removeClass('flipped');
                         card2.removeClass('flipped');
+                        if (mode === "solo") {
+                            soloMisses++;
+                        }
                         currentPlayerIndex = (currentPlayerIndex + 1) % numPlayers;
                         updateTurnIndicator();
                         flippedCards = [];
