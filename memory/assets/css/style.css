@@ -277,7 +277,8 @@ footer.fade-out {
     transition: transform 0.6s;
 }
 
-.card.flipped .card-inner {
+.card.flipped .card-inner,
+.card.matched .card-inner {
     transform: rotateY(180deg);
 }
 

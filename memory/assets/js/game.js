@@ -81,14 +81,17 @@ $(document).ready(function () {
     // --- BOARD STATE SYNC ---
     function updateBoardFromState() {
         if (isOnline && gameState) {
-            // Flip cards
+            // Remove all flip/match classes
             $('.card').removeClass('flipped matched');
-            (gameState.flipped || []).forEach(idx => {
-                $(`.card[data-card-id="${idx}"]`).addClass('flipped');
-            });
             // Mark matched cards
             (gameState.matched || []).forEach(idx => {
-                $(`.card[data-card-id="${idx}"]`).addClass('matched').removeClass('flipped');
+                $(`.card[data-card-id="${idx}"]`).addClass('matched');
+            });
+            // Flip currently flipped cards (but not matched)
+            (gameState.flipped || []).forEach(idx => {
+                if (!(gameState.matched || []).includes(idx)) {
+                    $(`.card[data-card-id="${idx}"]`).addClass('flipped');
+                }
             });
             flippedCards = []; // Always reset local flips to match server
         }
@@ -119,16 +122,44 @@ $(document).ready(function () {
     $(document).off('click', '.card').on('click', '.card', function () {
         if (isOnline && !gameState) return; // Wait for state to load
         if (typeof isMyTurn === 'function' && !isMyTurn()) return;
+        const cardIndex = parseInt($(this).attr('data-card-id'));
         if ($(this).hasClass('flipped') || $(this).hasClass('matched')) return;
         if (isOnline && gameState.flipped.length >= 2) return;
         if (!isOnline && flippedCards.length >= 2) return;
 
-        const cardIndex = parseInt($(this).attr('data-card-id'));
-
         if (isOnline) {
-            if (!gameState.flipped.includes(cardIndex)) {
+            if (!gameState.flipped.includes(cardIndex) && !gameState.matched.includes(cardIndex)) {
                 gameState.flipped.push(cardIndex);
+                updateBoardFromState(); // Show flip instantly
                 syncToLobby(gameState);
+
+                // Only process match logic if two cards are flipped
+                if (gameState.flipped.length === 2) {
+                    setTimeout(() => {
+                        const idx1 = gameState.flipped[0];
+                        const idx2 = gameState.flipped[1];
+                        const board = gameState.board || [];
+                        if (board[idx1] === board[idx2]) {
+                            // Match found
+                            gameState.matched = (gameState.matched || []).concat([idx1, idx2]);
+                            gameState.scores[gameState.currentPlayerIndex]++;
+                            // Keep matched cards visible by NOT clearing flipped immediately
+                            // Instead, clear flipped after a short delay so the animation can play
+                            syncToLobby(gameState);
+                            setTimeout(() => {
+                                gameState.flipped = [];
+                                syncToLobby(gameState);
+                            }, 700);
+                        } else {
+                            // Not a match: flip back after delay, then next player's turn
+                            setTimeout(() => {
+                                gameState.flipped = [];
+                                gameState.currentPlayerIndex = (gameState.currentPlayerIndex + 1) % (window.playerNames.length || 2);
+                                syncToLobby(gameState);
+                            }, 700);
+                        }
+                    }, 700);
+                }
             }
         } else {
             $(this).addClass('flipped');
