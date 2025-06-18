@@ -1,4 +1,5 @@
 <?php include 'tpl/header.php'; ?>
+<body class="online-page">
 <div class="top-controls">
     <button onclick="window.location.href='index.php'">◄ Back to menu</button>
 </div>

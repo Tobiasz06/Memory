@@ -106,6 +106,7 @@ $(document).ready(function () {
                 updateTurnIndicator();
                 updateScores();
                 updateBoardFromState();
+                checkGameOver();
             });
         }, 1000);
     } else {
@@ -280,14 +281,3 @@ function difficultyName(val) {
     if (val == 10 || val == "10") return "Hard";
     return val;
 }
-let html = '<table><tr><th>Name</th><th>Players</th><th>Difficulty</th><th>Join</th></tr>';
-lobbies.forEach(lobby => {
-    html += `<tr>
-        <td>${lobby.name}</td>
-        <td>${lobby.players.length}/${lobby.maxPlayers}</td>
-        <td>${difficultyName(lobby.difficulty)}</td>
-        <td><button class="join-lobby start-game-btn" data-id="${lobby.id}">Join</button></td>
-    </tr>`;
-});
-html += '</table>';
-$('#lobby-list').html(html);
