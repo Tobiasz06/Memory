@@ -226,7 +226,24 @@ $(document).ready(function () {
                     message = `🤝 It's a draw between: ${names.join(", ")}`;
                 }
             } else {
+                // get the solo player’s name from the url, fallback to "solo player" if not found
                 message = `You win! Total misses: ${soloMisses}`;
+                const soloPlayerName = urlParams.getAll("username[]")[0] || "Solo Player";
+                // send a post request to save the score data to the server
+                fetch('/Memory/memory/save_score.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: soloPlayerName,
+                        misses: soloMisses,
+                        pairs: soloMatchedPairs
+                    })
+                })
+                    .then(res => res.json())
+                    .then(data => console.log('Score saved:', data))
+                    .catch(err => console.error('Error saving score:', err));
             }
 
             $('#game-over-message').text(message).fadeIn();
