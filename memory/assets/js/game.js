@@ -131,7 +131,7 @@ $(document).ready(function () {
         if (isOnline) {
             if (!gameState.flipped.includes(cardIndex) && !gameState.matched.includes(cardIndex)) {
                 gameState.flipped.push(cardIndex);
-                updateBoardFromState(); // Show flip instantly
+                updateBoardFromState();
                 syncToLobby(gameState);
 
                 // Only process match logic if two cards are flipped
@@ -144,15 +144,12 @@ $(document).ready(function () {
                             // Match found
                             gameState.matched = (gameState.matched || []).concat([idx1, idx2]);
                             gameState.scores[gameState.currentPlayerIndex]++;
-                            // Keep matched cards visible by NOT clearing flipped immediately
-                            // Instead, clear flipped after a short delay so the animation can play
                             syncToLobby(gameState);
                             setTimeout(() => {
                                 gameState.flipped = [];
                                 syncToLobby(gameState);
                             }, 700);
                         } else {
-                            // Not a match: flip back after delay, then next player's turn
                             setTimeout(() => {
                                 gameState.flipped = [];
                                 gameState.currentPlayerIndex = (gameState.currentPlayerIndex + 1) % (window.playerNames.length || 2);
@@ -172,6 +169,9 @@ $(document).ready(function () {
                 const value2 = card2.attr('data-card');
                 if (value1 === value2) {
                     scores[currentPlayerIndex]++;
+                    if (mode === "solo") {
+                        soloMatchedPairs++; 
+                    }
                     flippedCards = [];
                     updateScores();
                     checkGameOver();
