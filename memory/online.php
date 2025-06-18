@@ -1,4 +1,7 @@
 <?php include 'tpl/header.php'; ?>
+<div class="top-controls">
+    <button onclick="window.location.href='index.php'">◄ Back to menu</button>
+</div>
 <div class="center-vertical-wrapper">
     <div class="container-box" id="online-lobby-app">
         <h2>Online Multiplayer</h2>

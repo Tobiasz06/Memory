@@ -11,6 +11,9 @@ $pairs = $_GET['pairs'] ?? '';
 // Always show at least one username input
 $numInputs = max(1, $players);
 ?>
+<div class="top-controls">
+    <button onclick="window.location.href='index.php'">◄ Back to menu</button>
+</div>
 <div class="center-vertical-wrapper">
     <form method="get" action="game.php" class="container-box" id="username-form">
         <input type="hidden" name="mode" value="<?php echo htmlspecialchars($gamemode); ?>">
