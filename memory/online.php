@@ -4,22 +4,21 @@
         <h2>Online Multiplayer</h2>
         <div id="lobby-create">
             <h3>Create Lobby</h3>
-            <input type="text" id="host-username" placeholder="Your username" required><br>
-            <input type="text" id="lobby-name" placeholder="Lobby name" required><br>
-            <input type="password" id="lobby-password" placeholder="Lobby password" required><br>
-            <label>Difficulty:</label>
-            <select id="lobby-difficulty">
-                <option value="3">Easy</option>
-                <option value="6" selected>Medium</option>
-                <option value="10">Hard</option>
-            </select><br>
-            <label>Players:</label>
-            <select id="lobby-players">
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select><br>
-            <button id="create-lobby-btn">Create Lobby</button>
+            <!-- Create Lobby -->
+            <input type="text" id="host-username" placeholder="Your username" required class="username-input host-username"><br>
+            <input type="text" id="lobby-name" placeholder="Lobby name" required class="username-input"><br>
+            <input type="password" id="lobby-password" placeholder="Lobby password" required class="username-input"><br>
+            <label>Select Difficulty:</label><br>
+            <button type="button" class="button buttoneasy" data-value="3">Easy</button>
+            <button type="button" class="button buttonmedium selected" data-value="6">Medium</button>
+            <button type="button" class="button buttonhard" data-value="10">Hard</button>
+            <input type="hidden" id="lobby-difficulty" value="6"><br>
+            <label>Players:</label><br>
+            <button type="button" class="buttonplayers selected" data-value="2">2</button>
+            <button type="button" class="buttonplayers" data-value="3">3</button>
+            <button type="button" class="buttonplayers" data-value="4">4</button>
+            <input type="hidden" id="lobby-players" value="2"><br>
+            <button id="create-lobby-btn" class="start-game-btn">Create Lobby</button>
         </div>
         <hr>
         <div id="lobby-list-section">
@@ -29,10 +28,11 @@
         <div id="lobby-join" style="display:none;">
             <h3>Join Lobby</h3>
             <div id="join-lobby-info"></div>
-            <input type="text" id="join-username" placeholder="Your username" required><br>
-            <input type="password" id="join-password" placeholder="Lobby password" required><br>
-            <button id="join-lobby-btn">Join Lobby</button>
-            <button id="cancel-join-btn">Cancel</button>
+            <!-- Join Lobby -->
+            <input type="text" id="join-username" placeholder="Your username" required class="username-input"><br>
+            <input type="password" id="join-password" placeholder="Lobby password" required class="username-input"><br>
+            <button id="join-lobby-btn" class="start-game-btn">Join</button>
+            <button id="cancel-join-btn" class="buttonplayers">Cancel</button>
             <div id="join-lobby-status"></div>
         </div>
     </div>
@@ -46,8 +46,8 @@ function refreshLobbyList() {
             html += `<tr>
                 <td>${lobby.name}</td>
                 <td>${lobby.players.length}/${lobby.maxPlayers}</td>
-                <td>${lobby.difficulty}</td>
-                <td><button class="join-lobby" data-id="${lobby.id}">Join</button></td>
+                <td>${difficultyName(lobby.difficulty)}</td>
+                <td><button class="join-lobby start-game-btn" data-id="${lobby.id}">Join</button></td>
             </tr>`;
         });
         html += '</table>';
@@ -110,5 +110,38 @@ $('#join-lobby-btn').on('click', function() {
         }
     }, 'json');
 });
+
+// Difficulty selection
+const diffButtons = document.querySelectorAll('.buttoneasy, .buttonmedium, .buttonhard');
+const diffInput = document.getElementById('lobby-difficulty');
+diffButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        diffButtons.forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        diffInput.value = btn.dataset.value;
+    });
+});
+// Set default
+diffButtons[1].classList.add('selected'); // Medium by default
+
+// Player count selection
+const playerButtons = document.querySelectorAll('.buttonplayers');
+const playerInput = document.getElementById('lobby-players');
+playerButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        playerButtons.forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        playerInput.value = btn.dataset.value;
+    });
+});
+// Set default
+playerButtons[0].classList.add('selected'); // 2 by default
+
+function difficultyName(val) {
+    if (val == 3 || val == "3") return "Easy";
+    if (val == 6 || val == "6") return "Medium";
+    if (val == 10 || val == "10") return "Hard";
+    return val;
+}
 </script>
 <?php include 'tpl/footer.php'; ?>

@@ -242,3 +242,21 @@ function fadeOutFooter(afterMs = 10000) {
 window.addEventListener('load', () => {
     fadeOutFooter(10000);
 });
+
+function difficultyName(val) {
+    if (val == 3 || val == "3") return "Easy";
+    if (val == 6 || val == "6") return "Medium";
+    if (val == 10 || val == "10") return "Hard";
+    return val;
+}
+let html = '<table><tr><th>Name</th><th>Players</th><th>Difficulty</th><th>Join</th></tr>';
+lobbies.forEach(lobby => {
+    html += `<tr>
+        <td>${lobby.name}</td>
+        <td>${lobby.players.length}/${lobby.maxPlayers}</td>
+        <td>${difficultyName(lobby.difficulty)}</td>
+        <td><button class="join-lobby start-game-btn" data-id="${lobby.id}">Join</button></td>
+    </tr>`;
+});
+html += '</table>';
+$('#lobby-list').html(html);

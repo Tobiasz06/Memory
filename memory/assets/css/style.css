@@ -438,7 +438,8 @@ input[type="radio"] {
     }
 }
 
-.username-input {
+.username-input,
+.host-username {
     width: 75%;
     padding: 10px 12px;
     margin: 4px auto 2px auto;
@@ -481,6 +482,23 @@ input[type="radio"] {
     display: block;
     text-align: center;
     margin-bottom: 4px;
+}
+
+/* Add to your style.css */
+.buttoneasy.selected {
+    background-color: #207a47 !important;
+    color: #fff !important;
+    border-color: #207a47 !important;
+}
+.buttonmedium.selected {
+    background-color: #a07f00 !important;
+    color: #fff !important;
+    border-color: #a07f00 !important;
+}
+.buttonhard.selected {
+    background-color: #c62828 !important;
+    color: #fff !important;
+    border-color: #c62828 !important;
 }
 
 

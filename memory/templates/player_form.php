@@ -33,6 +33,24 @@
     </form>
 </div>
 
+<div id="lobby-create">
+    <h3>Create Lobby</h3>
+    <input type="text" id="host-username" placeholder="Your username" required class="username-input host-username"><br>
+    <input type="text" id="lobby-name" placeholder="Lobby name" required class="username-input"><br>
+    <input type="password" id="lobby-password" placeholder="Lobby password" required class="username-input"><br>
+    <label>Select Difficulty:</label><br>
+    <button class="button buttoneasy" type="button" data-value="3">Easy</button>
+    <button class="button buttonmedium" type="button" data-value="6">Medium</button>
+    <button class="button buttonhard" type="button" data-value="10">Hard</button>
+    <input type="hidden" id="lobby-difficulty" value="3"><br>
+    <label>Players:</label><br>
+    <button class="buttonplayers" type="button" data-value="2">2</button>
+    <button class="buttonplayers" type="button" data-value="3">3</button>
+    <button class="buttonplayers" type="button" data-value="4">4</button>
+    <input type="hidden" id="lobby-players" value="2"><br>
+    <button id="create-lobby-btn" class="start-game-btn">Create Lobby</button>
+</div>
+
 <script>
     const modeRadios = document.querySelectorAll('input[name="mode"]');
     const playerSelect = document.getElementById('player-select');
