@@ -107,6 +107,12 @@ $(document).ready(function () {
                 updateScores();
                 updateBoardFromState();
                 checkGameOver();
+
+                // If the board has changed (after restart), reload the page for everyone
+                if (window.lastBoard && JSON.stringify(window.lastBoard) !== JSON.stringify(state.board)) {
+                    location.reload();
+                }
+                window.lastBoard = state.board ? [...state.board] : null;
             });
         }, 1000);
     } else {
@@ -254,8 +260,24 @@ $(document).ready(function () {
 
     // --- RESTART BUTTON ---
     $('#restart-button').on('click', function () {
-        location.reload();
+        if (isOnline && lobbyId && playerIndex === 0) { // Only host can restart
+            $.post('assets/ajax/restart_lobby.php', { lobbyId: lobbyId }, function(res) {
+                if (res.success) {
+                    // Don't reload immediately! Wait for polling to pick up the new board.
+                    $('#restart-button').fadeOut();
+                    $('#game-over-message').text('Restarting game...').fadeIn();
+                } else {
+                    alert('Failed to restart game.');
+                }
+            }, 'json');
+        } else if (!isOnline) {
+            location.reload();
+        }
     });
+
+    if (isOnline && playerIndex !== 0) {
+        $('#restart-button').remove();
+    }
 });
 
 // --- PLAYER FORM LOGIC (unchanged) ---

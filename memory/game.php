@@ -133,7 +133,11 @@ include 'tpl/header.php';
         <div id="game-over-message" style="display:none;"></div>
 
         <!-- restart button hidden at first -->
-        <button id="restart-button" style="display:none;">🔁 Restart Game</button>
+        <?php if ($lobbyId && $isHost): ?>
+            <button id="restart-button" style="display:none;">🔁 Restart Game</button>
+        <?php elseif (!$lobbyId): ?>
+            <button id="restart-button" style="display:none;">🔁 Restart Game</button>
+        <?php endif; ?>
 
         <!-- load the board with cards -->
         <?php include __DIR__ . '/tpl/game_board.php'; ?>
