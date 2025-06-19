@@ -1,6 +1,6 @@
-<!-- Main game logic, loads everything needed to play the game -->
-
 <?php
+// Main game logic, loads everything needed to play the game
+
 $lobbyId = $_GET['lobby'] ?? null;
 $playerIndex = $_GET['player'] ?? null;
 

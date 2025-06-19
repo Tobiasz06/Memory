@@ -1,6 +1,6 @@
-<!-- Handles entering username when joining a lobby -->
-
 <?php
+//Handles entering username when joining a lobby
+
 $bodyClass = 'username-page';
 $showTopControls = true;
 include 'tpl/header.php';

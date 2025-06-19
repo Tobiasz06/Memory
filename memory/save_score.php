@@ -1,6 +1,5 @@
-<!-- Handles saving solo mode score  -->
-
 <?php
+// Handles saving solo mode score
 
 header("Content-Type: application/json");
 

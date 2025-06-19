@@ -1,6 +1,5 @@
-<!-- Handles restarting of the lobby, ensures board is shuffled again -->
-
 <?php
+// Handles restarting of the lobby, ensures board is shuffled again
 $lobbiesFile = __DIR__ . '/../../data/lobbies.json';
 $lobbies = file_exists($lobbiesFile) ? json_decode(file_get_contents($lobbiesFile), true) : [];
 $lobbyId = $_POST['lobbyId'] ?? '';

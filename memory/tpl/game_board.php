@@ -1,7 +1,6 @@
-<!-- Generates the grid in which the cards are played -->
-
 <?php
-// If in online mode, use the board from the lobby state
+// This file generates the grid in which the cards are played 
+
 if (isset($lobby) && isset($lobby['state']['board'])) {
     $cards = $lobby['state']['board'];
     $pairs = count($cards) / 2;

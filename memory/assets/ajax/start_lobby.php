@@ -1,6 +1,5 @@
-<!-- Handles starting the game for the first time, shuffles board -->
-
 <?php
+// Handles starting the game for the first time, shuffles board
 $lobbiesFile = __DIR__ . '/../../data/lobbies.json';
 $lobbies = file_exists($lobbiesFile) ? json_decode(file_get_contents($lobbiesFile), true) : [];
 $lobbyId = $_POST['lobbyId'] ?? '';

@@ -76,7 +76,8 @@ $('#cancel-join-btn').on('click', function() {
     $('#lobby-list-section').show();
     $('#join-lobby-status').text('');
 });
-$('#create-lobby-btn').on('click', function() {
+$('#create-lobby-btn').on('click', function(e) {
+    e.preventDefault();
     const data = {
         name: $('#lobby-name').val(),
         password: $('#lobby-password').val(),

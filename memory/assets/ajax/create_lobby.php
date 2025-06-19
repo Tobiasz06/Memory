@@ -1,6 +1,6 @@
-<!-- AJAX handler for creating a lobby and saving that to lobbies.json -->
-
 <?php
+// AJAX handler for creating a lobby and saving that to lobbies.json
+
 $lobbiesFile = __DIR__ . '/../../data/lobbies.json';
 $lobbies = file_exists($lobbiesFile) ? json_decode(file_get_contents($lobbiesFile), true) : [];
 $lobbyId = uniqid('lobby_');
