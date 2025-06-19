@@ -1,6 +1,7 @@
+/* main areas */
 body {
     font-family: Arial, sans-serif;
-    background-color: #6db8e3; 
+    background-color: #6db8e3;
     margin: 0;
     padding: 0;
     text-align: center;
@@ -13,111 +14,6 @@ header {
     z-index: 100;
     background: #3b4856;
     opacity: 0.9;
-}
-
-h1 {
-    background-color: #3b4856; 
-    color: #9fadbd;
-    padding: 20px;
-    margin: 0;
-}
-
-#setup-form, footer {
-    margin: 20px auto;
-    max-width: 400px;
-    text-align: left;
-}
-
-.game-area {
-    height: calc(100vh - 140px);
-    padding: 0 10px;
-    background: linear-gradient(135deg, #c3e4fd, #6db8e3);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.game-mode-info {
-    color: #000000;
-    font-size: 1.1em;
-    font-weight: 500;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.center-vertical-wrapper {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
-    gap: 10px;
-    max-width: 800px;
-    width: 100%;
-}
-
-.card {
-    width: 100px;
-    height: 100px;
-    border: 2px solid #ccc;
-    background-color: #f0f0f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-.card img {
-    max-width: 80%;
-    max-height: 80%;
-    object-fit: contain;
-    display: block;
-    margin: auto;
-    pointer-events: none;
-}
-
-
-.top-controls {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1000;
-}
-
-.top-controls button {
-    background-color: #8796b9;
-    color: rgb(255, 255, 255);
-    border: none;
-    padding: 8px 16px;
-    font-size: 1em;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.top-controls button:hover {
-    background-color: #6784c6;
 }
 
 footer {
@@ -144,185 +40,36 @@ footer {
 }
 
 footer.fade-out {
-    animation: fadeOutFooter 1s ease forwards; 
+    animation: fadeOutFooter 1s ease forwards;
 }
 
-.container-box {
-    background-color: #e7dfce;
-    border: 15px solid #895135;
-    border-radius: 25px;
-    padding: 45px 80px 45px 80px;
-    max-width: 300px;
+h1 {
+    background-color: #3b4856;
+    color: #9fadbd;
+    padding: 20px;
+    margin: 0;
 }
 
-/* different layouts for difficulty levels */
-#game-board.easy {
-    justify-content: center;
-    margin: 35px auto;
-    grid-template-columns: repeat(3, 120px);
+#setup-form, footer {
+    margin: 20px auto;
+    max-width: 400px;
+    text-align: left;
 }
 
-#game-board.medium {
-    justify-content: center;
-    margin: 35px auto;
-    grid-template-columns: repeat(4, 120px);
-}
-
-#game-board.hard {
-    justify-content: center;
-    margin: 35px auto;
-    grid-template-columns: repeat(5, 120px);
-}
-
-.buttonplayers {
-    background-color: #5A82D1;
-    color: white;
-    border: 2px solid #3B5CA5;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border-radius: 8px;
-    cursor: pointer;
-    padding: 12px 18px;
-    font-size: inherit;
-}
-
-.buttonplayers:hover,
-.buttonplayers.selected {
-    background-color: #3B5CA5;
-    border: 2px solid #2F4A85;
-    color: white;
-}
-
-.button {
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-}
-
-/* difficulty buttons with different styles */
-.buttoneasy {
-    background-color: #d6f4d6;
-    color: #207a47;
-    border: 2px solid #207a47;
-    padding: 10px 18px;
-    border-radius: 8px;
-}
-
-.buttoneasy:hover {
-    background-color: #207a47;
-    color: white;
-}
-
-.buttonmedium {
-    background-color: #f3e7c0;
-    color: #a07f00;
-    border: 2px solid #a07f00;
-    padding: 10px 18px;
-    border-radius: 8px;
-}
-
-.buttonmedium:hover {
-    background-color: #a07f00;
-    color: white;
-}
-
-.buttonhard {
-    background-color: #f1c4c4;
-    color: #c62828;
-    border: 2px solid #c62828;
-    padding: 10px 18px;
-    border-radius: 8px;
-}
-
-.buttonhard:hover {
-    background-color: #c62828;
-    color: white;
-}
-
-.buttonconnection {
-    background-color: #5A82D1;
-    color: white;
-    border: 2px solid #3B5CA5;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    margin: 7px 8px 7px 0;
-    padding: 10px 18px;
-    font-size: inherit;
-}
-
-.buttonconnection:hover,
-.buttonconnection.selected {
-    background-color: #3B5CA5;
-    border-color: #2F4A85;
-    color: white;
-}
-
-#player-select {
-    display: none; 
-}
-
-.card {
-    width: 100px;
-    height: 100px;
-    perspective: 1000px; 
-}
-
-.card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
-}
-
-.card.flipped .card-inner,
-.card.matched .card-inner {
-    transform: rotateY(180deg);
-}
-
-.card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
+.game-area {
+    height: calc(100vh - 140px);
+    padding: 0 10px;
+    background: linear-gradient(135deg, #c3e4fd, #6db8e3);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
-
-.card-front {
-    transform: rotateY(0deg);
-}
-
-.card-back {
-    transform: rotateY(180deg);
-}
-
-#score-board p.current {
-    color: darkgreen;
-}
-
-/* styles for radio buttons to make them bigger and change color */
-input[type="radio"] {
-    accent-color: #3b4856;
-    transform: scale(1.2);
-    margin-right: 6px;
-}
-
-/* style for labels in the setup form */
-#setup-form label {
-    font-size: 1.1rem;
-}
-
-/* layout for main game area with left and right panels */
 .game-area-row {
     display: flex;
     flex-direction: row;
@@ -333,7 +80,6 @@ input[type="radio"] {
     gap: 30px;
 }
 
-/* styles for the left panel where cards or board might be shown */
 .left-panel {
     flex: 1;
     display: flex;
@@ -344,172 +90,22 @@ input[type="radio"] {
     justify-content: center;
 }
 
-/* box on the right with stats or buttons */
-.right-panel {
-    width: 240px;
-    height: 400px;
-    background-color: #f5f1e6;
-    padding: 24px;
+.center-vertical-wrapper {
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    border: 10px solid #895135;
-    border-radius: 12px;
-    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
-    align-self: center;
-    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
-.right-panel h2 {
-    font-size: 1.6rem;
-    color: #20335f;
-    margin-bottom: 16px;
-    border-bottom: 3px solid #ccc;
-    padding-bottom: 8px;
-}
 
-.mode-label {
-    font-weight: 800;
-    font-size: 1.2rem;
-    color: #2674ce;
-    margin-bottom: 15px;
-}
-
-#score-board {
-    margin-bottom: auto;
-}
-
-#score-board p {
-    margin-bottom: 0.25rem;
-    margin-top: 0rem;
-    font-size: 1rem;
-    color: #1e5ea7;
-}
-
-#message {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
-#restart-button {
-    background: #4C51BF;
-    color: #fff;
-    border: none;
-    margin-top: 0.5rem;
-    padding: 0.75rem 2rem;
-    border-radius: 6px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background 0.2s;
-    display: block;
-
-}
-
-#restart-button:hover {
-    background: #5A67D8;
-}
-
-/* banner that shows when the game ends */
-#game-over-message {
-    display: none;
-    margin: 30px auto 10px auto;
-    background: #38A169;
-    color: white;
-    padding: 15px 30px;
-    font-size: 1.6rem;
-    font-weight: 700;
-    text-align: center;
-    border-radius: 12px;
-    z-index: 1000;
-    max-width: 70%;
-    animation: popInGlow 0.8s ease forwards;
-}
-
-/* animation that makes the game over banner pop and glow */
-@keyframes popInGlow {
-    0% {
-        opacity: 0;
-        transform: scale(0.95) translateY(-10px);
-        filter: brightness(1.05);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.02) translateY(2px);
-        filter: brightness(1.08);
-    }
-    100% {
-        transform: scale(1) translateY(0);
-        filter: brightness(1);
-    }
-}
-
-.username-input,
-.host-username {
-    width: 75%;
-    padding: 8px 15px;
-    margin: 0px auto 0px auto;
-    border: 2px solid #3B5CA5;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    background-color: #f8fafc;
-    color: #20335f;
-    box-sizing: border-box;
-    display: block;
-}
-
-.username-input:focus {
-    border-color: #5A82D1;
-    outline: none;
-    background-color: #eaf1fb;
-}
-
-#start-game-btn,
-.start-game-btn {
-    background-color: #5A82D1;
-    color: white;
-    border: 2px solid #3B5CA5;
-    padding: 12px 18px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 4px;
-}
-
-.start-game-btn:hover,
-.start-game-btn:focus,
-#start-game-btn:hover {
-    background-color: #3B5CA5;
-    border-color: #2F4A85;
-    color: white;
-}
-
-.username-label {
-    font-weight: bold;
-    display: block;
-    text-align: center;
-    margin-bottom: 4px;
-}
-
-.buttoneasy.selected {
-    background-color: #207a47 !important;
-    color: #fff !important;
-    border-color: #207a47 !important;
-}
-.buttonmedium.selected {
-    background-color: #a07f00 !important;
-    color: #fff !important;
-    border-color: #a07f00 !important;
-}
-.buttonhard.selected {
-    background-color: #c62828 !important;
-    color: #fff !important;
-    border-color: #c62828 !important;
-}
-
+/* main areas online */
 .online-page .center-vertical-wrapper {
-    height: 100vh; 
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -552,6 +148,40 @@ input[type="radio"] {
     margin-top: 5px;
 }
 
+
+/* back to menu button */
+.top-controls {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.top-controls button {
+    background-color: #8796b9;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 8px 16px;
+    font-size: 1em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.top-controls button:hover {
+    background-color: #6784c6;
+}
+
+
+/* buttons on menu screen */
+.container-box {
+      background-color: #e7dfce;
+      border: 15px solid #895135;
+      border-radius: 25px;
+      padding: 45px 80px 45px 80px;
+      max-width: 300px;
+  }
+
 .container-box.waiting-lobby {
     min-width: 300px;
     margin: 0 auto;
@@ -565,15 +195,325 @@ input[type="radio"] {
     font-weight: 700;
 }
 
-#player-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 18px;
-    padding: 0;
+.button {
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
 }
+
+.buttonconnection {
+    background-color: #5A82D1;
+    color: white;
+    border: 2px solid #3B5CA5;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin: 7px 8px 7px 0;
+    padding: 10px 18px;
+    font-size: inherit;
+}
+
+.buttonconnection:hover,
+.buttonconnection.selected {
+    background-color: #3B5CA5;
+    border-color: #2F4A85;
+    color: white;
+}
+
+input[type="radio"] {
+    accent-color: #3b4856;
+    transform: scale(1.2);
+    margin-right: 6px;
+}
+
+.buttonplayers {
+    background-color: #5A82D1;
+    color: white;
+    border: 2px solid #3B5CA5;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 12px 18px;
+    font-size: inherit;
+}
+
+.buttoneasy {
+    background-color: #d6f4d6;
+    color: #207a47;
+    border: 2px solid #207a47;
+    padding: 10px 18px;
+    border-radius: 8px;
+}
+
+.buttoneasy:hover {
+    background-color: #207a47;
+    color: white;
+}
+
+.buttoneasy.selected {
+    background-color: #207a47 !important;
+    color: #fff !important;
+    border-color: #207a47 !important;
+}
+
+.buttonmedium {
+    background-color: #f3e7c0;
+    color: #a07f00;
+    border: 2px solid #a07f00;
+    padding: 10px 18px;
+    border-radius: 8px;
+}
+
+.buttonmedium:hover {
+    background-color: #a07f00;
+    color: white;
+}
+
+.buttonmedium.selected {
+    background-color: #a07f00 !important;
+    color: #fff !important;
+    border-color: #a07f00 !important;
+}
+
+.buttonhard {
+    background-color: #f1c4c4;
+    color: #c62828;
+    border: 2px solid #c62828;
+    padding: 10px 18px;
+    border-radius: 8px;
+}
+
+.buttonhard:hover {
+    background-color: #c62828;
+    color: white;
+}
+
+.buttonhard.selected {
+    background-color: #c62828 !important;
+    color: #fff !important;
+    border-color: #c62828 !important;
+}
+
+.buttonplayers:hover,
+.buttonplayers.selected {
+    background-color: #3B5CA5;
+    border: 2px solid #2F4A85;
+    color: white;
+}
+
+#start-game-btn,
+.start-game-btn {
+    background-color: #5A82D1;
+    color: white;
+    border: 2px solid #3B5CA5;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+.start-game-btn:hover,
+.start-game-btn:focus,
+#start-game-btn:hover {
+    background-color: #3B5CA5;
+    border-color: #2F4A85;
+    color: white;
+}
+
+
+/* username */
+.username-label {
+     font-weight: bold;
+     display: block;
+     text-align: center;
+     margin-bottom: 4px;
+}
+
+.username-input,
+.host-username {
+    width: 75%;
+    padding: 8px 15px;
+    margin: 0px auto 0px auto;
+    border: 2px solid #3B5CA5;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    background-color: #f8fafc;
+    color: #20335f;
+    box-sizing: border-box;
+    display: block;
+}
+
+.username-input:focus {
+    border-color: #5A82D1;
+    outline: none;
+    background-color: #eaf1fb;
+}
+
+
+/* card */
+.card {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #ccc;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card.flipped .card-inner,
+.card.matched .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.card-front {
+    transform: rotateY(0deg);
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+    pointer-events: none;
+}
+
+
+/* different layouts for difficulty levels */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    max-width: 800px;
+    width: 100%;
+}
+
+#game-board.easy {
+    justify-content: center;
+    margin: 35px auto;
+    grid-template-columns: repeat(3, 120px);
+}
+
+#game-board.medium {
+    justify-content: center;
+    margin: 35px auto;
+    grid-template-columns: repeat(4, 120px);
+}
+
+#game-board.hard {
+    justify-content: center;
+    margin: 35px auto;
+    grid-template-columns: repeat(5, 120px);
+}
+
+
+/* leaderbord styles */
+.right-panel {
+     width: 240px;
+     height: 400px;
+     background-color: #f5f1e6;
+     padding: 24px;
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-start;
+     border: 10px solid #895135;
+     border-radius: 12px;
+     box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+     align-self: center;
+     position: relative;
+ }
+
+.right-panel h2 {
+    font-size: 1.6rem;
+    color: #20335f;
+    margin-bottom: 16px;
+    border-bottom: 3px solid #ccc;
+    padding-bottom: 8px;
+}
+
+.mode-label {
+     font-weight: 800;
+     font-size: 1.2rem;
+     color: #2674ce;
+     margin-bottom: 15px;
+ }
+
+#score-board {
+    margin-bottom: auto;
+}
+
+#score-board p {
+    margin-bottom: 0.25rem;
+    margin-top: 0rem;
+    font-size: 1rem;
+    color: #1e5ea7;
+}
+
+#score-board p.current {
+    color: darkgreen;
+}
+
+.game-mode-info {
+     color: #000000;
+     font-size: 1.1em;
+     font-weight: 500;
+     margin-top: 20px;
+     margin-bottom: 20px;
+     text-align: center;
+ }
+
+
+/* waiting screen online lobby */
+#player-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 18px;
+      padding: 0;
+  }
 
 #player-list li {
     background: #f7e9d2;
@@ -600,3 +540,73 @@ input[type="radio"] {
 }
 
 
+/* game end objects */
+#message {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+#restart-button {
+    background: #4C51BF;
+    color: #fff;
+    border: none;
+    margin-top: 0.5rem;
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: block;
+
+}
+
+#restart-button:hover {
+    background: #5A67D8;
+}
+
+#game-over-message {
+    display: none;
+    margin: 30px auto 10px auto;
+    background: #38A169;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 12px;
+    z-index: 1000;
+    max-width: 70%;
+    animation: popInGlow 0.8s ease forwards;
+}
+
+
+/* animation that makes the game over banner pop and glow */
+@keyframes popInGlow {
+    0% {
+        opacity: 0;
+        transform: scale(0.95) translateY(-10px);
+        filter: brightness(1.05);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.02) translateY(2px);
+        filter: brightness(1.08);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        filter: brightness(1);
+    }
+}
+
+
+/* player select */
+#player-select {
+     display: none;
+ }
+
+
+/* style for labels in the setup form */
+#setup-form label {
+    font-size: 1.1rem;
+}
