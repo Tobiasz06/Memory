@@ -1,3 +1,5 @@
+<!-- Main game logic, loads everything needed to play the game -->
+
 <?php
 $lobbyId = $_GET['lobby'] ?? null;
 $playerIndex = $_GET['player'] ?? null;
@@ -16,12 +18,11 @@ if ($lobbyId) {
     $maxPlayers = $lobby['maxPlayers'];
     $isHost = ($playerIndex == 0);
 
-    // If the player is not in the lobby, show an error
     if (!in_array($playerNames[$playerIndex] ?? null, $playerNames)) {
         die('You are not a member of this lobby.');
     }
 
-    // Wait for enough players or for host to start
+    // Wait for enough players
     if (count($playerNames) < $maxPlayers || !$lobby['started']) {
         include 'tpl/header.php';
         ?>
@@ -86,11 +87,9 @@ $(function() {
     updateLobby();
 
     <?php if ($isHost): ?>
-    // Attach the handler ONCE, after DOM is ready
     $('#start-game-btn').off('click').on('click', function() {
-        $('#start-game-btn').prop('disabled', true); // Prevent double-click
+        $('#start-game-btn').prop('disabled', true);
         $.post('assets/ajax/start_lobby.php', { lobbyId: '<?= $lobbyId ?>' }, function(res) {
-            // The polling will reload the page for everyone
         });
     });
     <?php endif; ?>
@@ -108,7 +107,7 @@ $(function() {
         $name = $_GET["player$i"] ?? "Player $i";
         $playerNames[] = $name !== '' ? $name : "Player $i";
     }
-    // Only use username[] from GET if NOT in online mode
+
     if (!$lobbyId && isset($_GET['username'])) {
         $playerNames = $_GET['username'];
         for ($i = 0; $i < $players; $i++) {
@@ -118,7 +117,7 @@ $(function() {
     }
 }
 
-// load the top part of the html
+
 include 'tpl/header.php';
 ?>
 
@@ -129,26 +128,23 @@ include 'tpl/header.php';
             <button onclick="window.location.href='index.php'">◄ Back to menu</button>
         </div>
 
-        <!-- shows when the game ends -->
         <div id="game-over-message" style="display:none;"></div>
 
-        <!-- restart button hidden at first -->
         <?php if ($lobbyId && $isHost): ?>
             <button id="restart-button" style="display:none;">🔁 Restart Game</button>
         <?php elseif (!$lobbyId): ?>
             <button id="restart-button" style="display:none;">🔁 Restart Game</button>
         <?php endif; ?>
 
-        <!-- load the board with cards -->
         <?php include __DIR__ . '/tpl/game_board.php'; ?>
     </div>
 
     <aside class="right-panel">
         <h2>Scoreboard</h2>
 
-        <!-- shows whose turn it is or solo mode -->
+        <!-- shows turn in solo mode -->
         <div id="turn-indicator" class="mode-label">
-            <?php if ($lobbyId): // Always show multiplayer UI for online games ?>
+            <?php if ($lobbyId):?>
                 <span id="player-turn-label"><?= htmlspecialchars($playerNames[0]) ?>'s turn</span>
             <?php elseif ($mode === 'multi'): ?>
                 <span id="player-turn-label"><?= htmlspecialchars($playerNames[0]) ?>'s turn</span>
@@ -157,7 +153,7 @@ include 'tpl/header.php';
             <?php endif; ?>
         </div>
 
-        <!-- scoreboard for players or miss counter for solo -->
+        <!-- scoreboard for solo -->
         <div id="score-board">
             <?php if ($lobbyId || $mode === 'multi'): ?>
                 <?php foreach ($playerNames as $index => $name): ?>
@@ -168,7 +164,7 @@ include 'tpl/header.php';
             <?php endif; ?>
         </div>
 
-        <!-- shows selected settings -->
+        <!-- shows settings -->
         <div class="game-mode-info">
             <p>
                 Game mode: <strong><?= htmlspecialchars($mode) ?></strong>

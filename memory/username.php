@@ -1,3 +1,5 @@
+<!-- Handles entering username when joining a lobby -->
+
 <?php
 $bodyClass = 'username-page';
 $showTopControls = true;

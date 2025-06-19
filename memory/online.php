@@ -1,3 +1,5 @@
+<!-- Manages all online parts, creating, joining, displaying and starting lobbies -->
+
 <?php include 'tpl/header.php'; ?>
 <body class="online-page">
 <div class="top-controls">
@@ -124,8 +126,8 @@ diffButtons.forEach(btn => {
         diffInput.value = btn.dataset.value;
     });
 });
-// Set default
-diffButtons[1].classList.add('selected'); // Medium by default
+
+diffButtons[1].classList.add('selected'); 
 
 // Player count selection
 const playerButtons = document.querySelectorAll('.buttonplayers');
@@ -137,8 +139,8 @@ playerButtons.forEach(btn => {
         playerInput.value = btn.dataset.value;
     });
 });
-// Set default
-playerButtons[0].classList.add('selected'); // 2 by default
+
+playerButtons[0].classList.add('selected'); 
 
 function difficultyName(val) {
     if (val == 3 || val == "3") return "Easy";

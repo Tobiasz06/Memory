@@ -1,3 +1,5 @@
+<!-- Using AJAX, updates board state while playing -->
+
 <?php
 $lobbiesFile = __DIR__ . '/../../data/lobbies.json';
 $lobbies = file_exists($lobbiesFile) ? json_decode(file_get_contents($lobbiesFile), true) : [];

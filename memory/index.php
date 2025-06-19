@@ -1,3 +1,5 @@
+<!-- Entry point of website, loads templates -->
+
 <?php
 include 'tpl/header.php';
 echo '<div class="center-vertical-wrapper">';

@@ -1,3 +1,5 @@
+<!-- Bottom tag of the page, also opens the JS links -->
+
 <footer>
     <p>Find all pairs in as few attempts as possible to win!</p>
 </footer>

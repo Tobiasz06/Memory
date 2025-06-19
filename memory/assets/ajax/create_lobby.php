@@ -1,3 +1,5 @@
+<!-- AJAX handler for creating a lobby and saving that to lobbies.json -->
+
 <?php
 $lobbiesFile = __DIR__ . '/../../data/lobbies.json';
 $lobbies = file_exists($lobbiesFile) ? json_decode(file_get_contents($lobbiesFile), true) : [];
@@ -24,7 +26,6 @@ $lobbies[$lobbyId] = [
         'currentPlayerIndex' => 0,
         'flipped' => [],
         'matched' => [],
-        // Add more game state here if needed
     ],
     'started' => false,
 ];

@@ -1,3 +1,5 @@
+<!-- Returns the state of a lobby for updating  -->
+
 <?php
 $lobbiesFile = __DIR__ . '/../../data/lobbies.json';
 $lobbies = file_exists($lobbiesFile) ? json_decode(file_get_contents($lobbiesFile), true) : [];

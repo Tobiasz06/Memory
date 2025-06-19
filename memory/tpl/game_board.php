@@ -1,3 +1,5 @@
+<!-- Generates the grid in which the cards are played -->
+
 <?php
 // If in online mode, use the board from the lobby state
 if (isset($lobby) && isset($lobby['state']['board'])) {

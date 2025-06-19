@@ -1,3 +1,5 @@
+<!-- Makes banner uptop including the back to menu button, and opens the css files -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

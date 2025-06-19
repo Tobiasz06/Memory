@@ -1,18 +1,20 @@
+<!-- HTML for selecting game settings -->
+
 <div class="container-box">
     <form action="username.php" method="get" id="setup-form">
-        <!-- lets the user choose connection type -->
+        <!-- connection type -->
         <label>Connection Type:</label><br>
         <button class="buttonconnection" type="button" data-value="local">Local</button>
         <button class="buttonconnection" type="button" data-value="online" onclick="window.location.href='online.php'">Online</button>
         <input type="hidden" name="connection" id="connection-input">
         <br><br>
 
-        <!-- lets the user choose game mode -->
+        <!-- game mode -->
         <label>Mode:</label><br>
         <input type="radio" name="mode" value="solo" checked> Solo<br>
         <input type="radio" name="mode" value="multi"> Multiplayer<br><br>
 
-        <!-- this block appears only in multiplayer to choose number of players -->
+        <!-- multiplayer number of players -->
         <div id="player-select" style="display: none;">
             <label>Number of Players:</label><br>
             <button class="buttonplayers" type="button" data-value="2">2</button>
@@ -22,13 +24,12 @@
             <br><br>
         </div>
 
-        <!-- lets the user pick difficulty level -->
+        <!-- difficulty level -->
         <label>Select Difficulty:</label><br>
         <button class="button buttoneasy" type="submit" name="pairs" value="3">Easy</button>
         <button class="button buttonmedium" type="submit" name="pairs" value="6">Medium</button>
         <button class="button buttonhard" type="submit" name="pairs" value="10">Hard</button>
 
-        <!-- warning message placeholder -->
         <p id="warning-message" style="color: red; font-weight: bold; display: none;"></p>
     </form>
 </div>
@@ -90,7 +91,7 @@
         updateMode();
         const defaultConnection = document.querySelector('.buttonconnection[data-value="local"]');
         if (defaultConnection) {
-            defaultConnection.click(); // sets default to local
+            defaultConnection.click()
         }
     });
 </script>

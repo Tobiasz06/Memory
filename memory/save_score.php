@@ -1,13 +1,11 @@
-<?php
-// save_score.php
+<!-- Handles saving solo mode score  -->
 
-// set the response content type to json
+<?php
+
 header("Content-Type: application/json");
 
-// read the raw input from the request body
 $raw = file_get_contents("php://input");
 
-// decode the json input into an associative array
 $data = json_decode($raw, true);
 
 // check if required fields are present and valid
@@ -16,7 +14,7 @@ if (
     !isset($data['name']) ||
     !isset($data['misses'])
 ) {
-    http_response_code(400); // bad request if missing data
+    http_response_code(400);
     echo json_encode(["error" => "missing required fields"]);
     exit;
 }
@@ -25,8 +23,8 @@ if (
 $newEntry = [
     "name" => $data['name'],
     "misses" => (int)$data['misses'],
-    "pairs" => (int)($data['pairs'] ?? 0), // default to 0 if not set
-    "timestamp" => date('c') // iso 8601 formatted timestamp
+    "pairs" => (int)($data['pairs'] ?? 0), 
+    "timestamp" => date('c') 
 ];
 
 // define the path to the score file
