@@ -81,7 +81,7 @@ h1 {
     justify-content: center;
     transition: transform 0.3s;
     cursor: pointer;
-}
+    border-radius: 5px;
 
 .card:hover {
     transform: scale(1.05);
